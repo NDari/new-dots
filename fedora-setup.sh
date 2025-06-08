@@ -43,7 +43,6 @@ sudo dnf install -y \
 	direnv \
 	tmux \
 	xclip \
-	tldr \
 	openssl-devel \
 	uv
 
@@ -68,6 +67,19 @@ $HOME/.cargo/bin/cargo install git-delta
 $HOME/.cargo/bin/cargo install just
 $HOME/.cargo/bin/cargo install fd-find
 $HOME/.cargo/bin/cargo install ripgrep
-$HOME/.cargo/bin/cargo install bat
+$HOME/.cargo/bin/cargo install batprocs
 $HOME/.cargo/bin/cargo install zoxide
 $HOME/.cargo/bin/cargo install procs
+$HOME/.cargo/bin/cargo install tealdeer
+
+# to remove windows $PATH from infecting this path in WSL
+# will need to shut down and restart (wsl --shutdown)
+if [[ -f /etc/wsl.conf ]]
+then
+	sudo bash -c "cat <<EOF>> /etc/wsl.conf
+
+[interop]
+appendWindowsPath = false
+EOF
+"
+fi
