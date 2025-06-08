@@ -146,7 +146,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-	desc = "remove trailing whitespace",
+	desc = "remove trailing whitespaces on write",
 	pattern = "*",
 	command = ":%s/\\s\\+$//e",
 })
@@ -171,6 +171,18 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 				"WinLeave",
 			},
 		})
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+	desc = "go back to the last edited spot when opening a file",
+	group = vim.api.nvim_create_augroup("RestoreCursor", { clear = true }),
+	callback = function()
+		vim.cmd([[
+      if line("'\"") > 0 && line("'\"") <= line("$") |
+        exe "normal! g`\"" |
+      endif
+    ]])
 	end,
 })
 
