@@ -67,7 +67,7 @@ $HOME/.cargo/bin/cargo install git-delta
 $HOME/.cargo/bin/cargo install just
 $HOME/.cargo/bin/cargo install fd-find
 $HOME/.cargo/bin/cargo install ripgrep
-$HOME/.cargo/bin/cargo install batprocs
+$HOME/.cargo/bin/cargo install bat
 $HOME/.cargo/bin/cargo install zoxide
 $HOME/.cargo/bin/cargo install procs
 $HOME/.cargo/bin/cargo install tealdeer
