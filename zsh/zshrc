@@ -32,9 +32,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Bat
 export BAT_THEME="gruvbox-dark"
 
-# starship
-export STARSHIP_CONFIG="$DOTFILES/starship/starship.toml"
-
 # Go stuff
 export GOPATH=$HOME/.go
 export GOBIN=$GOPATH/bin # has to be abs or use $GOPATH
@@ -140,6 +137,6 @@ unset env
 
 # shell integrations
 eval "$(fzf --zsh)"
-eval "$(starship init zsh)"
+eval "$(oh-my-posh init zsh --config $DOTFILES/oh-my-posh/term-theme.toml)"
 eval "$(direnv hook zsh)"
 eval "$(zoxide init --cmd cd zsh)"

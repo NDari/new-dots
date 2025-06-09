@@ -68,7 +68,6 @@ $HOME/.cargo/bin/cargo install bat
 $HOME/.cargo/bin/cargo install zoxide
 $HOME/.cargo/bin/cargo install procs
 $HOME/.cargo/bin/cargo install tealdeer
-$HOME/.cargo/bin/cargo install starship --locked
 
 # to remove windows $PATH from infecting this path in WSL
 # will need to shut down and restart (wsl --shutdown)
