@@ -22,9 +22,6 @@ sudo dnf install -y zsh
 chsh -s /usr/bin/zsh
 ln -s $HOME/dotfiles/zsh/zshrc $HOME/.zshrc
 
-# oh my posh
-curl -s https://ohmyposh.dev/install.sh | bash -s
-
 # zinit
 ZINIT_HOME="$HOME/.local/share/zinit/zinit.git"
 mkdir -p "$(dirname $ZINIT_HOME)"
@@ -71,6 +68,7 @@ $HOME/.cargo/bin/cargo install bat
 $HOME/.cargo/bin/cargo install zoxide
 $HOME/.cargo/bin/cargo install procs
 $HOME/.cargo/bin/cargo install tealdeer
+$HOME/.cargo/bin/cargo install starship --locked
 
 # to remove windows $PATH from infecting this path in WSL
 # will need to shut down and restart (wsl --shutdown)

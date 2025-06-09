@@ -32,6 +32,9 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Bat
 export BAT_THEME="gruvbox-dark"
 
+# starship
+export STARSHIP_CONFIG="$DOTFILES/startship/starship.toml"
+
 # Go stuff
 export GOPATH=$HOME/.go
 export GOBIN=$GOPATH/bin # has to be abs or use $GOPATH
