@@ -140,6 +140,6 @@ unset env
 
 # shell integrations
 eval "$(fzf --zsh)"
-eval "$(oh-my-posh init zsh --config $DOTFILES/oh-my-posh/term-theme.toml)"
+eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 eval "$(zoxide init --cmd cd zsh)"
