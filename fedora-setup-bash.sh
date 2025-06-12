@@ -14,9 +14,13 @@ git config --global init.defaultbranch "main"
 git config --global core.whitespace "cr-at-eol"
 git config --global include.path $HOME/dotfiles/delta/delta.conf
 
-# zsh
+# bash
 cd $HOME
+mv .bashrc .bashrc.bak
 ln -s $HOME/dotfiles/bash/bashrc $HOME/.bashrc
+
+# oh-my-posh
+curl -s https://ohmyposh.dev/install.sh | bash -s
 
 # nvim
 cd $HOME
@@ -32,6 +36,14 @@ sudo dnf install -y \
 	tmux \
 	xclip \
 	openssl-devel \
+	ripgrep \
+	fd-find \
+	just \
+	git-delta \
+	zoxide \
+	bat \
+	procs \
+	tealdeer \
 	uv
 
 # tmux
@@ -47,19 +59,6 @@ curl -LO https://go.dev/dl/${GO_VERSION}.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf ${GO_VERSION}.linux-amd64.tar.gz
 rm ${GO_VERSION}.linux-amd64.tar.gz
 cd $HOME
-
-# rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-$HOME/.cargo/bin/cargo install cargo-update
-$HOME/.cargo/bin/cargo install du-dust
-$HOME/.cargo/bin/cargo install git-delta
-$HOME/.cargo/bin/cargo install just
-$HOME/.cargo/bin/cargo install fd-find
-$HOME/.cargo/bin/cargo install ripgrep
-$HOME/.cargo/bin/cargo install bat
-$HOME/.cargo/bin/cargo install zoxide
-$HOME/.cargo/bin/cargo install procs
-$HOME/.cargo/bin/cargo install tealdeer
 
 # to remove windows $PATH from infecting this path in WSL
 # will need to shut down and restart (wsl --shutdown)
