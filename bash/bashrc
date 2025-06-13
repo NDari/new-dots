@@ -14,8 +14,9 @@ set -o noclobber
 # Update window size after every command
 shopt -s checkwinsize
 
-# Automatically trim long paths in the prompt (requires Bash 4.x)
-PROMPT_DIRTRIM=2
+# dont trigger completion on empty line. This can lock
+# up the session if there are a lot of options
+shopt -s no_empty_cmd_completion
 
 # Enable history expansion with space
 # E.g. typing !!<space> will replace the !! with your last command
@@ -66,13 +67,13 @@ HISTTIMEFORMAT='%F %T '
 
 # [[ Env vars ]]
 # my config files
-export DOTFILES=$HOME/dotfiles
+export DOTFILES=${HOME}/dotfiles
 
 # XDG
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_DATA_HOME=$HOME/.local/share
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_STATE_HOME=$HOME/.local/state
+export XDG_CONFIG_HOME=${HOME}/.config
+export XDG_DATA_HOME=${HOME}/.local/share
+export XDG_CACHE_HOME=${HOME}/.cache
+export XDG_STATE_HOME=${HOME}/.local/state
 
 # Term
 export TERM=xterm-256color
@@ -83,23 +84,23 @@ export VISUAL="nvim"
 
 # FZF stuff
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 
 # Bat
 export BAT_THEME="gruvbox-dark"
 
 # Go stuff
-export GOPATH=$HOME/.go
-export GOBIN=$GOPATH/bin # has to be abs or use $GOPATH
-export GOMODCACHE=$GOPATH/pkg/mod
-export GOCACHE=$XDG_CACHE_HOME/go-build
+export GOPATH=${HOME}/.go
+export GOBIN=${GOPATH}/bin # has to be abs or use $GOPATH
+export GOMODCACHE=${GOPATH}/pkg/mod
+export GOCACHE=${XDG_CACHE_HOME}/go-build
 
 # Path
 ALLPATHS=(
-	"$HOME/.local/bin"
+	"${HOME}/.local/bin"
 	"/usr/local/go/bin"
-	"$HOME/.cargo/bin"
-	"$GOPATH/bin"
+	"${HOME}/.cargo/bin"
+	"${GOPATH}/bin"
 )
 printf -v NEWPATHS "%s:" "${ALLPATHS[@]}"
 export PATH=${NEWPATHS}${PATH}
@@ -113,7 +114,7 @@ bind '"\C-n": history-search-forward'
 
 # system aliases
 alias e='nvim'
-alias vi="nvim -u $HOME/.config/nvim/minimal-nvim.lua"
+alias vi="nvim -u ${HOME}/.config/nvim/minimal-nvim.lua"
 alias less='less -R' # pass escape chars through
 alias c='clear'
 alias enw='emacs -nw'
@@ -134,14 +135,14 @@ alias ta='tmux attach -t'
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 # fix watch
-alias watch="watch "
+alias watch='watch '
 
 # remove things like ^M on enter for interactive CLIs
 stty sane
 
 # shell integrations
 eval "$(fzf --bash)"
-eval "$(oh-my-posh init bash --config $DOTFILES/oh-my-posh/term-theme.toml)"
+eval "$(oh-my-posh init bash --config ${DOTFILES}/oh-my-posh/term-theme.toml)"
 eval "$(direnv hook bash)"
 eval "$(zoxide init --cmd cd bash)"
 
@@ -160,10 +161,10 @@ agent_load_env
 # agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2= agent not running
 agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
 
-if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
+if [ ! "${SSH_AUTH_SOCK}" ] || [ ${agent_run_state} = 2 ]; then
         agent_start
         ssh-add -k
-elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
+elif [ "${SSH_AUTH_SOCK}" ] && [ ${agent_run_state} = 1 ]; then
         ssh-add -k
 fi
 unset env
