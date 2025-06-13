@@ -21,6 +21,9 @@ curl -s https://ohmyposh.dev/install.sh | bash -s
 # Term
 export TERM=xterm-256color
 
+# oh-my-posh
+curl -s https://ohmyposh.dev/install.sh | bash -s
+
 # Editor
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -57,7 +60,7 @@ bind '"\C-n": history-search-forward'
 
 # system aliases
 alias e='nvim'
-alias vi="nvim"
+alias vi="nvim -u $HOME/.config/nvim/minimal-nvim.lua"
 alias less='less -R' # pass escape chars through
 alias c='clear'
 alias enw='emacs -nw'

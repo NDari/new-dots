@@ -31,6 +31,7 @@ git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 cd $HOME
 mkdir -p $HOME/.config/nvim
 ln -s $HOME/dotfiles/nvim/init.lua $HOME/.config/nvim/init.lua
+ln -s $HOME/dotfiles/nvim/minimal-nvim.lua $HOME/.config/nvim/minimal-nvim.lua
 
 mkdir $HOME/.ssh
 

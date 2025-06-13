@@ -26,6 +26,7 @@ curl -s https://ohmyposh.dev/install.sh | bash -s
 cd $HOME
 mkdir -p $HOME/.config/nvim
 ln -s $HOME/dotfiles/nvim/init.lua $HOME/.config/nvim/init.lua
+ln -s $HOME/dotfiles/nvim/minimal-nvim.lua $HOME/.config/nvim/minimal-nvim.lua
 
 mkdir $HOME/.ssh
 

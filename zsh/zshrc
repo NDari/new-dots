@@ -22,6 +22,9 @@ export HISTSIZE=10000                   # Maximum events for internal history
 export SAVEHIST=$HISTSIZE               # Maximum events in history file
 export HISTDUP=erase                    # erase duplicate
 
+# oh-my-posh
+curl -s https://ohmyposh.dev/install.sh | bash -s
+
 # zinit
 export ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
 
@@ -86,7 +89,7 @@ bindkey "^n" history-search-forward
 
 # system aliases
 alias e='nvim'
-alias vi="nvim"
+alias vi="nvim -u $HOME/.config/nvim/minimal-nvim.lua"
 alias less='less -R' # pass escape chars through
 alias c='clear'
 alias enw='emacs -nw'
