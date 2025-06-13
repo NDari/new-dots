@@ -2,6 +2,13 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- set the current $MYVIMRC if not set. This happens when an init file
+-- is used with 'nvim -u initfile' to load a different profile
+local filename = function()
+	return debug.getinfo(2, "S").source:sub(2) -- Get source string, remove "@"
+end
+vim.env.MYVIMRC = filename()
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
