@@ -76,5 +76,8 @@ if is_windows() then
 	config.default_domain = "WSL:FedoraLinux-42"
 end
 
+config.initial_cols = 200
+config.initial_rows = 50
+
 -- and finally, return the configuration to wezterm
 return config
