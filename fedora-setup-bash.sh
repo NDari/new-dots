@@ -28,7 +28,17 @@ mkdir -p $HOME/.config/nvim
 ln -s $HOME/dotfiles/nvim/init.lua $HOME/.config/nvim/init.lua
 ln -s $HOME/dotfiles/nvim/minimal-nvim.lua $HOME/.config/nvim/minimal-nvim.lua
 
+# ssh
 mkdir $HOME/.ssh
+if [[ -f /mnt/c/Users/nasee/.ssh/id_ed25519 ]]
+then
+	cp /mnt/c/Users/nasee/.ssh/id_ed25519 $HOME/.ssh/
+	chmod 600 $HOME/.ssh/id_ed25519
+fi
+if [[ -f /mnt/c/Users/nasee/.ssh/id_ed25519.pub ]]
+then
+	cp /mnt/c/Users/nasee/.ssh/id_ed25519.pub $HOME/.ssh/
+fi
 
 sudo dnf install -y \
 	fzf \
