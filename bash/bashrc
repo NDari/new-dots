@@ -86,3 +86,4 @@ eval "$(oh-my-posh init bash --config $DOTFILES/oh-my-posh/term-theme.toml)"
 eval "$(direnv hook bash)"
 eval "$(zoxide init --cmd cd bash)"
 eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
