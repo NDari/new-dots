@@ -257,21 +257,6 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"zenbones-theme/zenbones.nvim",
-		-- Optionally install Lush. Allows for more configuration or extending the colorscheme
-		-- If you don't want to install lush, make sure to set g:zenbones_compat = 1
-		-- In Vim, compat mode is turned on as Lush only works in Neovim.
-		dependencies = "rktjmp/lush.nvim",
-		lazy = false,
-		priority = 1000,
-		-- you can set set configuration options here
-		-- config = function()
-		--     vim.g.zenbones_darken_comments = 45
-		--     vim.cmd.colorscheme('zenbones')
-		-- end
-	},
-
 	{ -- s<char><char> to target, enter to go to next, backspace to prev
 		"ggandor/leap.nvim",
 		config = function()
@@ -310,7 +295,6 @@ require("lazy").setup({
 
 	{ -- readline chords in insert
 		"tpope/vim-rsi",
-		lksdjf,
 	},
 
 	{
@@ -971,7 +955,7 @@ require("lazy").setup({
 		},
 		opts = {
 			notify_on_error = false,
-			format_on_save = true,
+			format_on_save = false,
 			-- format_on_save = function(bufnr)
 			-- 	-- Disable "format_on_save lsp_fallback" for languages that don't
 			-- 	-- have a well standardized coding style. You can add additional
