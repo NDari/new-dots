@@ -27,6 +27,9 @@ ZINIT_HOME="$HOME/.local/share/zinit/zinit.git"
 mkdir -p "$(dirname $ZINIT_HOME)"
 git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
+# oh-my-posh
+curl -s https://ohmyposh.dev/install.sh | bash -s
+
 # nvim
 cd $HOME
 mkdir -p $HOME/.config/nvim

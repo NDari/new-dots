@@ -15,14 +15,8 @@ export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_STATE_HOME=$HOME/.local/state
 
-# oh-my-posh
-curl -s https://ohmyposh.dev/install.sh | bash -s
-
 # Term
 export TERM=xterm-256color
-
-# oh-my-posh
-curl -s https://ohmyposh.dev/install.sh | bash -s
 
 # Editor
 export EDITOR="nvim"
