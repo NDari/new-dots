@@ -39,6 +39,12 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- always use spaces instead of tab, and set tab to 4 spaces globally
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+
 -- Keep signcolumn on by default
 vim.opt.signcolumn = "yes"
 
@@ -125,17 +131,15 @@ vim.keymap.set("n", "<leader>k", vim.diagnostic.open_float)
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
+
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	callback = function()
 		vim.highlight.on_yank()
 	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	desc = "set default tab to 4 spaces",
-	pattern = "*",
-	command = "setlocal shiftwidth=4 tabstop=4",
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -176,5 +180,16 @@ vim.api.nvim_create_autocmd("BufReadPost", {
         exe "normal! g`\"" |
       endif
     ]])
+	end,
+})
+
+-- set tab to 2 spaces in some languages
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "javascript", "typescript", "html", "lua", "bash", "yaml", "xml", "css", "scss", "json" },
+	callback = function()
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.tabstop = 2
+		vim.opt_local.softtabstop = 2
+		vim.opt_local.expandtab = true
 	end,
 })

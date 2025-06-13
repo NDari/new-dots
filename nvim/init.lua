@@ -29,12 +29,6 @@ vim.schedule(function()
 	vim.opt.clipboard = "unnamedplus"
 end)
 
--- set default tab to 4 spaces
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "*",
-	command = "setlocal shiftwidth=2 tabstop=2",
-})
-
 -- Enable break indent
 vim.opt.breakindent = true
 
@@ -44,6 +38,12 @@ vim.opt.undofile = true
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- always use spaces instead of tab, and set tab to 4 spaces globally
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = "yes"
@@ -183,6 +183,17 @@ vim.api.nvim_create_autocmd("BufReadPost", {
         exe "normal! g`\"" |
       endif
     ]])
+	end,
+})
+
+-- set tab to 2 spaces in some languages
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "javascript", "typescript", "html", "lua", "bash", "yaml", "xml", "css", "scss", "json" },
+	callback = function()
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.tabstop = 2
+		vim.opt_local.softtabstop = 2
+		vim.opt_local.expandtab = true
 	end,
 })
 
