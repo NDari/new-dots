@@ -51,6 +51,7 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
+vim.opt.shiftround = true -- make indentation multiple of shiftwidth
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = "yes"
