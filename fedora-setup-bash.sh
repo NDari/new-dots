@@ -50,7 +50,6 @@ sudo dnf install -y \
 	ripgrep \
 	fd-find \
 	just \
-	git-delta \
 	zoxide \
 	bat \
 	procs \

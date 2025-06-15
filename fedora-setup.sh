@@ -64,7 +64,6 @@ cd $HOME
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 $HOME/.cargo/bin/cargo install cargo-update
 $HOME/.cargo/bin/cargo install du-dust
-$HOME/.cargo/bin/cargo install git-delta
 $HOME/.cargo/bin/cargo install just
 $HOME/.cargo/bin/cargo install fd-find
 $HOME/.cargo/bin/cargo install ripgrep
