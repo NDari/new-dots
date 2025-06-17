@@ -148,59 +148,59 @@ require("lazy").setup({
 		},
 		keys = {
 			-- Top Pickers & Explorer
-			{ "<leader>b", function() Snacks.picker.buffers({ current = false }) end, desc = "Buffers", },
-			{ "<leader>/", function() Snacks.picker.grep() end, desc = "Grep", },
-			{ "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History", },
-			{ "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History", },
-			{ "<leader>e", function() Snacks.explorer() end, desc = "File Explorer", },
+			{ "<leader>b", function() require("snacks").picker.buffers({ current = false }) end, desc = "Buffers", },
+			{ "<leader>/", function() require("snacks").picker.grep() end, desc = "Grep", },
+			{ "<leader>:", function() require("snacks").picker.command_history() end, desc = "Command History", },
+			{ "<leader>n", function() require("snacks").picker.notifications() end, desc = "Notification History", },
+			{ "<leader>e", function() require("snacks").explorer() end, desc = "File Explorer", },
 			-- find
-			{ "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files", },
-			{ "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files", },
-			{ "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects", },
-			{ "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent", },
+			{ "<leader>ff", function() require("snacks").picker.files() end, desc = "Find Files", },
+			{ "<leader>fg", function() require("snacks").picker.git_files() end, desc = "Find Git Files", },
+			{ "<leader>fp", function() require("snacks").picker.projects() end, desc = "Projects", },
+			{ "<leader>fr", function() require("snacks").picker.recent() end, desc = "Recent", },
 			-- git
-			{ "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches", },
-			{ "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log", },
-			{ "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line", },
-			{ "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status", },
-			{ "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash", },
-			{ "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)", },
-			{ "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File", },
+			{ "<leader>gb", function() require("snacks").picker.git_branches() end, desc = "Git Branches", },
+			{ "<leader>gl", function() require("snacks").picker.git_log() end, desc = "Git Log", },
+			{ "<leader>gL", function() require("snacks").picker.git_log_line() end, desc = "Git Log Line", },
+			{ "<leader>gs", function() require("snacks").picker.git_status() end, desc = "Git Status", },
+			{ "<leader>gS", function() require("snacks").picker.git_stash() end, desc = "Git Stash", },
+			{ "<leader>gd", function() require("snacks").picker.git_diff() end, desc = "Git Diff (Hunks)", },
+			{ "<leader>gf", function() require("snacks").picker.git_log_file() end, desc = "Git Log File", },
 			-- Grep
-			{ "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines", },
-			{ "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers", },
-			{ "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep", },
-			{ "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" }, },
+			{ "<leader>sb", function() require("snacks").picker.lines() end, desc = "Buffer Lines", },
+			{ "<leader>sB", function() require("snacks").picker.grep_buffers() end, desc = "Grep Open Buffers", },
+			{ "<leader>sg", function() require("snacks").picker.grep() end, desc = "Grep", },
+			{ "<leader>sw", function() require("snacks").picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" }, },
 			-- search
-			{ '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers", },
-			{ "<leader>s/", function() Snacks.picker.search_history() end, desc = "Search History", },
-			{ "<leader>sa", function() Snacks.picker.autocmds() end, desc = "Autocmds", },
-			{ "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines", },
-			{ "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History", },
-			{ "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands", },
-			{ "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics", },
-			{ "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics", },
-			{ "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages", },
-			{ "<leader>sH", function() Snacks.picker.highlights() end, desc = "Highligsts", },
-			{ "<leader>si", function() Snacks.picker.icons() end, desc = "Icons", },
-			{ "<leader>sj", function() Snacks.picker.jumps() end, desc = "Jumps", },
-			{ "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps", },
-			{ "<leader>sl", function() Snacks.picker.loclist() end, desc = "Location List", },
-			{ "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks", },
-			{ "<leader>sM", function() Snacks.picker.man() end, desc = "Man Pages", },
-			{ "<leader>sp", function() Snacks.picker.lazy() end, desc = "Search for Plugin Spec", },
-			{ "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List", },
-			{ "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume", },
-			{ "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History", },
-			{ "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes", },
+			{ '<leader>s"', function() require("snacks").picker.registers() end, desc = "Registers", },
+			{ "<leader>s/", function() require("snacks").picker.search_history() end, desc = "Search History", },
+			{ "<leader>sa", function() require("snacks").picker.autocmds() end, desc = "Autocmds", },
+			{ "<leader>sb", function() require("snacks").picker.lines() end, desc = "Buffer Lines", },
+			{ "<leader>sc", function() require("snacks").picker.command_history() end, desc = "Command History", },
+			{ "<leader>sC", function() require("snacks").picker.commands() end, desc = "Commands", },
+			{ "<leader>sd", function() require("snacks").picker.diagnostics() end, desc = "Diagnostics", },
+			{ "<leader>sD", function() require("snacks").picker.diagnostics_buffer() end, desc = "Buffer Diagnostics", },
+			{ "<leader>sh", function() require("snacks").picker.help() end, desc = "Help Pages", },
+			{ "<leader>sH", function() require("snacks").picker.highlights() end, desc = "Highligsts", },
+			{ "<leader>si", function() require("snacks").picker.icons() end, desc = "Icons", },
+			{ "<leader>sj", function() require("snacks").picker.jumps() end, desc = "Jumps", },
+			{ "<leader>sk", function() require("snacks").picker.keymaps() end, desc = "Keymaps", },
+			{ "<leader>sl", function() require("snacks").picker.loclist() end, desc = "Location List", },
+			{ "<leader>sm", function() require("snacks").picker.marks() end, desc = "Marks", },
+			{ "<leader>sM", function() require("snacks").picker.man() end, desc = "Man Pages", },
+			{ "<leader>sp", function() require("snacks").picker.lazy() end, desc = "Search for Plugin Spec", },
+			{ "<leader>sq", function() require("snacks").picker.qflist() end, desc = "Quickfix List", },
+			{ "<leader>sR", function() require("snacks").picker.resume() end, desc = "Resume", },
+			{ "<leader>su", function() require("snacks").picker.undo() end, desc = "Undo History", },
+			{ "<leader>uC", function() require("snacks").picker.colorschemes() end, desc = "Colorschemes", },
 			-- LSP
-			{ "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition", },
-			{ "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration", },
-			{ "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References", },
-			{ "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation", },
-			{ "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition", },
-			{ "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols", },
-			{ "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols", },
+			{ "gd", function() require("snacks").picker.lsp_definitions() end, desc = "Goto Definition", },
+			{ "gD", function() require("snacks").picker.lsp_declarations() end, desc = "Goto Declaration", },
+			{ "gr", function() require("snacks").picker.lsp_references() end, nowait = true, desc = "References", },
+			{ "gI", function() require("snacks").picker.lsp_implementations() end, desc = "Goto Implementation", },
+			{ "gy", function() require("snacks").picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition", },
+			{ "<leader>ss", function() require("snacks").picker.lsp_symbols() end, desc = "LSP Symbols", },
+			{ "<leader>sS", function() require("snacks").picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols", },
 			-- Other
 			-- { "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" }, },
 			-- { "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" }, },
@@ -211,28 +211,28 @@ require("lazy").setup({
 				callback = function()
 					-- Setup some globals for debugging (lazy-loaded)
 					_G.dd = function(...)
-						Snacks.debug.inspect(...)
+						require("snacks").debug.inspect(...)
 					end
 					_G.bt = function()
-						Snacks.debug.backtrace()
+						require("snacks").debug.backtrace()
 					end
 					vim.print = _G.dd -- Override print to use snacks for `:=` command
 
 					-- Create some toggle mappings
-					Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
-					Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
-					Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
-					Snacks.toggle.diagnostics():map("<leader>ud")
-					Snacks.toggle.line_number():map("<leader>ul")
-					Snacks.toggle
+					require("snacks").toggle.option("spell", { name = "Spelling" }):map("<leader>us")
+					require("snacks").toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
+					require("snacks").toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
+					require("snacks").toggle.diagnostics():map("<leader>ud")
+					require("snacks").toggle.line_number():map("<leader>ul")
+					require("snacks").toggle
 						.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
 						:map("<leader>uc")
-					Snacks.toggle
+					require("snacks").toggle
 						.option("background", { off = "light", on = "dark", name = "Dark Background" })
 						:map("<leader>ub")
-					Snacks.toggle.inlay_hints():map("<leader>uh")
-					Snacks.toggle.indent():map("<leader>ug")
-					Snacks.toggle.dim():map("<leader>uD")
+					require("snacks").toggle.inlay_hints():map("<leader>uh")
+					require("snacks").toggle.indent():map("<leader>ug")
+					require("snacks").toggle.dim():map("<leader>uD")
 				end,
 			})
 		end,
@@ -372,21 +372,6 @@ require("lazy").setup({
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
 				-- ts_ls = {},
-				--
-				pylsp = {
-					-- cmd = { ... },
-					-- filetypes = { ... },
-					-- capabilities = {},
-					settings = {
-						Python = {
-							plugins = {
-								pycodestyle = {
-									maxLineLength = 100,
-								},
-							},
-						},
-					},
-				},
 
 				lua_ls = {
 					-- cmd = { ... },
@@ -428,6 +413,7 @@ require("lazy").setup({
 
 			require("mason-lspconfig").setup({
 				ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+        automatic_enable = true,
 				automatic_installation = false,
 				handlers = {
 					function(server_name)
