@@ -59,7 +59,7 @@ require("lazy").setup({
 			leap.opts.preview_filter = function()
 				return false
 			end
-			require("leap.user").set_repeat_keys("<enter>", "<backspace>")
+			-- require("leap.user").set_repeat_keys("<enter>", "<backspace>")
 		end,
 	},
 
