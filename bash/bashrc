@@ -114,7 +114,7 @@ bind '"\C-n": history-search-forward'
 
 # system aliases
 alias e='nvim'
-alias vi="nvim -u ${HOME}/.config/nvim/minimal-nvim.lua"
+alias vi='NVIM_APPNAME="minvim" nvim'
 alias vdiff="nvim -d"
 alias less='less -R' # pass escape chars through
 alias c='clear'

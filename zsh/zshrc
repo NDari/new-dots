@@ -1,12 +1,12 @@
 # [[ Env vars ]]
 # my config files
-export DOTFILES=$HOME/dotfiles
+export DOTFILES=${HOME}/dotfiles
 
 # XDG
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_DATA_HOME=$HOME/.local/share
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_STATE_HOME=$HOME/.local/state
+export XDG_CONFIG_HOME=${HOME}/.config
+export XDG_DATA_HOME=${HOME}/.local/share
+export XDG_CACHE_HOME=${HOME}/.cache
+export XDG_STATE_HOME=${HOME}/.local/state
 
 # Term
 export TERM=xterm-256color
@@ -16,37 +16,37 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 # ZSH
-export ZRC="$HOME/.zshrc"
-export HISTFILE="$HOME/.zhistory"       # History filepath
+export ZRC="${HOME}/.zshrc"
+export HISTFILE="${HOME}/.zhistory"       # History filepath
 export HISTSIZE=10000                   # Maximum events for internal history
-export SAVEHIST=$HISTSIZE               # Maximum events in history file
+export SAVEHIST=${HISTSIZE}               # Maximum events in history file
 export HISTDUP=erase                    # erase duplicate
 
 # oh-my-posh
 curl -s https://ohmyposh.dev/install.sh | bash -s
 
 # zinit
-export ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
+export ZINIT_HOME="${XDG_DATA_HOME}/zinit/zinit.git"
 
 # FZF stuff
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 
 # Bat
 export BAT_THEME="gruvbox-dark"
 
 # Go stuff
-export GOPATH=$HOME/.go
-export GOBIN=$GOPATH/bin # has to be abs or use $GOPATH
-export GOMODCACHE=$GOPATH/pkg/mod
-export GOCACHE=$XDG_CACHE_HOME/go-build
+export GOPATH=${HOME}/.go
+export GOBIN=${GOPATH}/bin # has to be abs or use $GOPATH
+export GOMODCACHE=${GOPATH}/pkg/mod
+export GOCACHE=${XDG_CACHE_HOME}/go-build
 
 # Path
 ALLPATHS=(
-	"$HOME/.local/bin"
+	"${HOME}/.local/bin"
 	"/usr/local/go/bin"
-	"$HOME/.cargo/bin"
-	"$GOPATH/bin"
+	"${HOME}/.cargo/bin"
+	"${GOPATH}/bin"
 )
 printf -v NEWPATHS "%s:" "${ALLPATHS[@]}"
 export PATH=${NEWPATHS}${PATH}
@@ -89,7 +89,7 @@ bindkey "^n" history-search-forward
 
 # system aliases
 alias e='nvim'
-alias vi="nvim -u $HOME/.config/nvim/minimal-nvim.lua"
+alias vi='NVIM_APPNAME="minvim" nvim'
 alias vdiff="nvim -d"
 alias less='less -R' # pass escape chars through
 alias c='clear'
@@ -141,7 +141,7 @@ unset env
 
 # shell integrations
 eval "$(fzf --zsh)"
-eval "$(oh-my-posh init zsh --config $DOTFILES/oh-my-posh/term-theme.toml)"
+eval "$(oh-my-posh init zsh --config ${DOTFILES}/oh-my-posh/term-theme.toml)"
 eval "$(direnv hook zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(ssh-agent -s)"

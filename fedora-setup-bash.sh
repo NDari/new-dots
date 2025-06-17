@@ -24,9 +24,17 @@ curl -s https://ohmyposh.dev/install.sh | bash -s
 
 # nvim
 cd $HOME
+# regular nvim
 mkdir -p $HOME/.config/nvim
 ln -s $HOME/dotfiles/nvim/init.lua $HOME/.config/nvim/init.lua
-ln -s $HOME/dotfiles/nvim/minimal-nvim.lua $HOME/.config/nvim/minimal-nvim.lua
+ln -s $HOME/dotfiles/nvim/lua $HOME/.config/nvim/lua
+# minimal nvim, does not install plugins
+mkdir -p $HOME/.config/minvim
+# copy the init since we will change it.
+cp $HOME/dotfiles/nvim/init.lua $HOME/.config/minvim/init.lua
+ln -s $HOME/dotfiles/nvim/lua $HOME/.config/minvim/lua
+# disable plugins
+sed -i 's/local add_plugins = true/local add_plugins = false/' $HOME/.config/minvim/init.lua
 
 # ssh
 mkdir $HOME/.ssh
