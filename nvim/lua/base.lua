@@ -115,12 +115,6 @@ vim.keymap.set("n", "<leader>ev", ":e $MYVIMRC<CR>")
 vim.keymap.set("n", "n", "nzzzv", { noremap = true })
 vim.keymap.set("n", "N", "Nzzzv", { noremap = true })
 
--- paste over selection without copying the selection to clipboard
-vim.keymap.set("x", "<leader>p", [["_dP]])
-
--- Yanking a line should act like D and C
-vim.keymap.set("n", "Y", "y$")
-
 -- retain highlighted section after indenting
 vim.keymap.set("x", ">", ">gv")
 vim.keymap.set("x", "<", "<gv")
