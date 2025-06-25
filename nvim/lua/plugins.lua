@@ -79,6 +79,25 @@ require("lazy").setup({
 		"tpope/vim-repeat",
 	},
 
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
+  },
+
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -147,12 +166,13 @@ require("lazy").setup({
 			},
 		},
 		keys = {
+			{ "<leader><leader>", function() require("snacks").picker() end, desc = "Show all pickers", },
 			-- Top Pickers & Explorer
 			{ "<leader>b", function() require("snacks").picker.buffers({ current = false }) end, desc = "Buffers", },
 			{ "<leader>/", function() require("snacks").picker.grep() end, desc = "Grep", },
 			{ "<leader>:", function() require("snacks").picker.command_history() end, desc = "Command History", },
 			{ "<leader>n", function() require("snacks").picker.notifications() end, desc = "Notification History", },
-			{ "<leader>e", function() require("snacks").explorer() end, desc = "File Explorer", },
+			{ "<leader>ef", function() require("snacks").explorer() end, desc = "File Explorer", },
 			-- find
 			{ "<leader>ff", function() require("snacks").picker.files() end, desc = "Find Files", },
 			{ "<leader>fg", function() require("snacks").picker.git_files() end, desc = "Find Git Files", },
@@ -196,11 +216,11 @@ require("lazy").setup({
 			-- LSP
 			{ "gd", function() require("snacks").picker.lsp_definitions() end, desc = "Goto Definition", },
 			{ "gD", function() require("snacks").picker.lsp_declarations() end, desc = "Goto Declaration", },
-			{ "gr", function() require("snacks").picker.lsp_references() end, nowait = true, desc = "References", },
+			-- { "gr", function() require("snacks").picker.lsp_references() end, nowait = true, desc = "References", },
 			{ "gI", function() require("snacks").picker.lsp_implementations() end, desc = "Goto Implementation", },
 			{ "gy", function() require("snacks").picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition", },
-			{ "<leader>ss", function() require("snacks").picker.lsp_symbols() end, desc = "LSP Symbols", },
-			{ "<leader>sS", function() require("snacks").picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols", },
+			{ "<leader>sS", function() require("snacks").picker.lsp_symbols() end, desc = "LSP Symbols", },
+			{ "<leader>ss", function() require("snacks").picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols", },
 			-- Other
 			-- { "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" }, },
 			-- { "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" }, },
