@@ -138,6 +138,16 @@ require("lazy").setup({
 		lazy = false,
 	},
 
+  {
+      'MeanderingProgrammer/render-markdown.nvim',
+      -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+      dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+      -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+      ---@module 'render-markdown'
+      ---@type render.md.UserConfig
+      opts = {},
+  },
+
 	{
 		"folke/snacks.nvim",
 		priority = 1000,
@@ -295,6 +305,9 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
+        "python",
+        "go",
+        "c_sharp",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
@@ -623,6 +636,12 @@ require("lazy").setup({
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
 		priority = 1000, -- make sure to load this before all the other start plugins
 	},
+  {
+    "catppuccin/nvim",
+    lazy = false,
+    name = "catppuccin",
+    priority = 1000
+  },
 
 	{ -- Highlight todo, notes, etc in comments
 		"folke/todo-comments.nvim",
@@ -632,28 +651,36 @@ require("lazy").setup({
 	},
 })
 
-require("gruvbox").setup({
-	terminal_colors = true, -- add neovim terminal colors
-	undercurl = true,
-	underline = true,
-	bold = false,
-	italic = {
-		strings = false,
-		emphasis = false,
-		comments = false,
-		operators = false,
-		folds = true,
-	},
-	strikethrough = true,
-	invert_selection = false,
-	invert_signs = false,
-	invert_tabline = false,
-	inverse = true, -- invert background for search, diffs, statuslines and errors
-	contrast = "", -- can be "hard", "soft" or empty string
-	palette_overrides = {},
-	overrides = {},
-	dim_inactive = false,
-	transparent_mode = false,
-})
+-- require("gruvbox").setup({
+-- 	terminal_colors = true, -- add neovim terminal colors
+-- 	undercurl = true,
+-- 	underline = true,
+-- 	bold = false,
+-- 	italic = {
+-- 		strings = false,
+-- 		emphasis = false,
+-- 		comments = false,
+-- 		operators = false,
+-- 		folds = true,
+-- 	},
+-- 	strikethrough = true,
+-- 	invert_selection = false,
+-- 	invert_signs = false,
+-- 	invert_tabline = false,
+-- 	inverse = true, -- invert background for search, diffs, statuslines and errors
+-- 	contrast = "", -- can be "hard", "soft" or empty string
+-- 	palette_overrides = {},
+-- 	overrides = {},
+-- 	dim_inactive = false,
+-- 	transparent_mode = false,
+-- })
+--
+-- vim.cmd.colorscheme("gruvbox")
 
-vim.cmd.colorscheme("gruvbox")
+require("catppuccin").setup({
+  flavour = "latte",
+  no_italic = true,
+  no_bold = true,
+  show_end_of_buffer = true,
+})
+vim.cmd.colorscheme("catppuccin-latte")
