@@ -682,5 +682,9 @@ require("catppuccin").setup({
   no_italic = true,
   no_bold = true,
   show_end_of_buffer = true,
+  float = {
+    transparent = true, -- enable transparent floating windows
+    solid = true, -- use solid styling for floating windows, see |winborder|
+  },
 })
 vim.cmd.colorscheme("catppuccin-latte")
