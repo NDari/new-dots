@@ -366,10 +366,10 @@ require("lazy").setup({
 				update_in_insert = false, -- so diags are updated on insertLeave
 				severity_sort = true,
 				-- virtual_text = { current_line = true, severity = { min = "INFO", max = "WARN" } },
-				virtual_lines = { current_line = true, severity = { min = "ERROR" } },
+				-- virtual_lines = { current_line = true, severity = { min = "ERROR" } },
 				float = {
 					focusable = false,
-					severity = { min = "INFO", max = "WARN" },
+					severity = { min = "INFO", max = "ERROR" },
 					style = "minimal",
 					border = "rounded",
 					source = "if_many",

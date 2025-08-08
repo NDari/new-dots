@@ -9,6 +9,10 @@ local filename = function()
 end
 vim.env.MYVIMRC = filename()
 
+if vim.g.vscode then
+  vim.keymap.set("n", "u", "<Cmd>call VSCodeNotify('undo')<CR>")
+  vim.keymap.set("n", "<C-r>", "<Cmd>call VSCodeNotify('redo')<CR>")
+end
 
 vim.cmd.colorscheme("slate") -- colo for when not using plugins. changes in the plugin folder
 
