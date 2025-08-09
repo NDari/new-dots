@@ -1,0 +1,24 @@
+# Settings apply to all WSL 2 distributions
+# Copy to C:\Users\name\.wslconfig
+[wsl2]
+
+# 75%
+memory=24GB
+
+# 75%
+processors=12
+
+# Disable auto memory reclaim. For heavy, long-running computations, we want WSL
+# to hold onto its allocated memory for consistent performance.
+# autoMemoryReclaim=disabled
+
+# swap for more memory. 0 unless we need more
+swap=0GB
+
+# For minor performance gains, disable page reporting.
+pageReporting=false
+
+[interop]
+
+# remove windows executable from path to avoid conflicts
+appendWindowsPath = false

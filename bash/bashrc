@@ -144,6 +144,7 @@ stty sane
 # shell integrations
 eval "$(fzf --bash)"
 eval "$(oh-my-posh init bash --config ${DOTFILES}/oh-my-posh/term-theme.toml)"
+# eval "$(starship init bash)"
 eval "$(direnv hook bash)"
 eval "$(zoxide init --cmd cd bash)"
 
