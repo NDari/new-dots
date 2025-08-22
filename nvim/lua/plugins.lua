@@ -651,40 +651,40 @@ require("lazy").setup({
 	},
 })
 
--- require("gruvbox").setup({
--- 	terminal_colors = true, -- add neovim terminal colors
--- 	undercurl = true,
--- 	underline = true,
--- 	bold = false,
--- 	italic = {
--- 		strings = false,
--- 		emphasis = false,
--- 		comments = false,
--- 		operators = false,
--- 		folds = true,
--- 	},
--- 	strikethrough = true,
--- 	invert_selection = false,
--- 	invert_signs = false,
--- 	invert_tabline = false,
--- 	inverse = true, -- invert background for search, diffs, statuslines and errors
--- 	contrast = "", -- can be "hard", "soft" or empty string
--- 	palette_overrides = {},
--- 	overrides = {},
--- 	dim_inactive = false,
--- 	transparent_mode = false,
--- })
---
--- vim.cmd.colorscheme("gruvbox")
-
-require("catppuccin").setup({
-  flavour = "latte",
-  no_italic = true,
-  no_bold = true,
-  show_end_of_buffer = true,
-  float = {
-    transparent = true, -- enable transparent floating windows
-    solid = true, -- use solid styling for floating windows, see |winborder|
-  },
+require("gruvbox").setup({
+	terminal_colors = true, -- add neovim terminal colors
+	undercurl = true,
+	underline = true,
+	bold = false,
+	italic = {
+		strings = false,
+		emphasis = false,
+		comments = false,
+		operators = false,
+		folds = true,
+	},
+	strikethrough = true,
+	invert_selection = false,
+	invert_signs = false,
+	invert_tabline = false,
+	inverse = true, -- invert background for search, diffs, statuslines and errors
+	contrast = "", -- can be "hard", "soft" or empty string
+	palette_overrides = {},
+	overrides = {},
+	dim_inactive = false,
+	transparent_mode = false,
 })
-vim.cmd.colorscheme("catppuccin-latte")
+
+vim.cmd.colorscheme("gruvbox")
+
+-- require("catppuccin").setup({
+--   flavour = "latte",
+--   no_italic = true,
+--   no_bold = true,
+--   show_end_of_buffer = true,
+--   float = {
+--     transparent = true, -- enable transparent floating windows
+--     solid = true, -- use solid styling for floating windows, see |winborder|
+--   },
+-- })
+-- vim.cmd.colorscheme("catppuccin-latte")

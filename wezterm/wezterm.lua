@@ -20,16 +20,17 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
+-- config.color_scheme = "Catppuccin Latte (Gogh)"
 config.color_scheme = "Gruvbox Dark (Gogh)"
 
--- config.font = wezterm.font("JetBrainsMonoNL Nerd Font", { weight = "Bold", italic = false })
-config.font = wezterm.font("JetBrainsMonoNL Nerd Font", { weight = "Bold", italic = true })
+config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold", italic = false })
+-- config.font = wezterm.font("Hasklig", { weight = "Bold", italic = false })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 -- no audible bell
 config.audible_bell = "Disabled"
 
-config.font_size = 11
+config.font_size = 16
 config.hide_tab_bar_if_only_one_tab = true
 config.term = "xterm-256color"
 
@@ -56,6 +57,8 @@ config.keys = {
 	{ key = "[", mods = "LEADER", action = act.ActivateCopyMode },
 	{ key = "]", mods = "LEADER", action = act({ PasteFrom = "Clipboard" }) },
 	{ key = "c", mods = "LEADER", action = act({ CopyTo = "Clipboard" }) },
+	{ key = "v", mods = "CMD", action = act({ PasteFrom = "Clipboard" }) },
+	{ key = "c", mods = "CMD", action = act({ CopyTo = "Clipboard" }) },
 }
 
 config.wsl_domains = {
@@ -76,8 +79,8 @@ if is_windows() then
 	config.default_domain = "WSL:FedoraLinux-42"
 end
 
-config.initial_cols = 200
-config.initial_rows = 50
+-- config.initial_cols = 100
+-- config.initial_rows = 40
 
 -- and finally, return the configuration to wezterm
 return config
