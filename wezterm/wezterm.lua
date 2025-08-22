@@ -23,7 +23,7 @@ local config = wezterm.config_builder()
 -- config.color_scheme = "Catppuccin Latte (Gogh)"
 config.color_scheme = "Gruvbox Dark (Gogh)"
 
-config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold", italic = false })
+config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold", italic = true })
 -- config.font = wezterm.font("Hasklig", { weight = "Bold", italic = false })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
