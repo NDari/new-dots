@@ -576,7 +576,7 @@ require("lazy").setup({
 
 					-- Accept ([y]es) the completion.
 					--  This will auto-import if your LSP supports it.
-					--  This will expand snippets if the LSP sent a snippet.
+
 					-- ["<C-y>"] = cmp.mapping.confirm({ select = true }),
 
 					-- If you prefer more traditional completion keymaps,
@@ -635,12 +635,83 @@ require("lazy").setup({
 		"ellisonleao/gruvbox.nvim",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
 		priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require("gruvbox").setup({
+        terminal_colors = true, -- add neovim terminal colors
+        undercurl = true,
+        underline = true,
+        bold = false,
+        italic = {
+          strings = false,
+          emphasis = false,
+          comments = false,
+          operators = false,
+          folds = true,
+        },
+        strikethrough = true,
+        invert_selection = false,
+        invert_signs = false,
+        invert_tabline = false,
+        inverse = true, -- invert background for search, diffs, statuslines and errors
+        contrast = "", -- can be "hard", "soft" or empty string
+        palette_overrides = {},
+        overrides = {},
+        dim_inactive = false,
+        transparent_mode = false,
+      })
+      require("gruvbox").load()
+    end
 	},
   {
     "catppuccin/nvim",
     lazy = false,
     name = "catppuccin",
-    priority = 1000
+    priority = 1000,
+    config = function()
+      require("catppuccin").setup({
+        flavour = "latte",
+        no_italic = true,
+        no_bold = true,
+        show_end_of_buffer = true,
+        float = {
+          transparent = true, -- enable transparent floating windows
+          solid = true, -- use solid styling for floating windows, see |winborder|
+        },
+      })
+      -- require("catppuccin").load()
+    end
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('kanagawa').setup({
+          compile = false,             -- enable compiling the colorscheme
+          undercurl = true,            -- enable undercurls
+          commentStyle = { italic = true },
+          functionStyle = {},
+          keywordStyle = { italic = true},
+          statementStyle = { bold = true },
+          typeStyle = {},
+          transparent = false,         -- do not set background color
+          dimInactive = false,         -- dim inactive window `:h hl-NormalNC`
+          terminalColors = true,       -- define vim.g.terminal_color_{0,17}
+          colors = {                   -- add/modify theme and palette colors
+              palette = {},
+              theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+          },
+          overrides = function(colors) -- add/modify highlights
+              return {}
+          end,
+          theme = "dragon",              -- Load "wave" theme
+          background = {               -- map the value of 'background' option to a theme
+              dark = "dragon",           -- try "dragon" !
+              light = "lotus"
+          },
+      })
+      -- require("kanagawa").load()
+    end
   },
 
 	{ -- Highlight todo, notes, etc in comments
@@ -650,41 +721,3 @@ require("lazy").setup({
 		opts = { signs = false },
 	},
 })
-
-require("gruvbox").setup({
-	terminal_colors = true, -- add neovim terminal colors
-	undercurl = true,
-	underline = true,
-	bold = false,
-	italic = {
-		strings = false,
-		emphasis = false,
-		comments = false,
-		operators = false,
-		folds = true,
-	},
-	strikethrough = true,
-	invert_selection = false,
-	invert_signs = false,
-	invert_tabline = false,
-	inverse = true, -- invert background for search, diffs, statuslines and errors
-	contrast = "", -- can be "hard", "soft" or empty string
-	palette_overrides = {},
-	overrides = {},
-	dim_inactive = false,
-	transparent_mode = false,
-})
-
-vim.cmd.colorscheme("gruvbox")
-
--- require("catppuccin").setup({
---   flavour = "latte",
---   no_italic = true,
---   no_bold = true,
---   show_end_of_buffer = true,
---   float = {
---     transparent = true, -- enable transparent floating windows
---     solid = true, -- use solid styling for floating windows, see |winborder|
---   },
--- })
--- vim.cmd.colorscheme("catppuccin-latte")

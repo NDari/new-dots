@@ -53,8 +53,8 @@ $HOME/.tmux/plugins/tpm/bin/install_plugins
 # go
 GO_VERSION="go1.25.0"
 mkdir -p $HOME/tools && cd $HOME/tools
-curl -LO https://go.dev/dl/${GO_VERSION}.linux-amd64.tar.gz
-sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf ${GO_VERSION}.linux-amd64.tar.gz
+curl -LO https://go.dev/dl/${GO_VERSION}.darwin-arm64.tar.gz
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf ${GO_VERSION}.darwin-arm64.tar.gz
 rm ${GO_VERSION}.linux-amd64.tar.gz
 cd $HOME
 
