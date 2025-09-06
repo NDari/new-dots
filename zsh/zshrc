@@ -70,6 +70,7 @@ zinit light Aloxaf/fzf-tab
 
 # add autocompletions
 autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 # zinit wants this...
 zinit cdreplay -q
@@ -141,5 +142,5 @@ unset env
 eval "$(fzf --zsh)"
 eval "$(oh-my-posh init zsh --config ${DOTFILES}/oh-my-posh/term-theme.toml)"
 eval "$(direnv hook zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+# eval "$(zoxide init --cmd cd zsh)"
 # eval "$(ssh-agent -s)"
