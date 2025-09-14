@@ -24,14 +24,14 @@ local config = wezterm.config_builder()
 config.color_scheme = "Gruvbox Dark (Gogh)"
 
 -- config.font = wezterm.font("FiraCode Nerd Font", { weight = "Bold", italic = false })
-config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold", italic = true })
+config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold", italic = false })
 -- config.font = wezterm.font("Hasklig", { weight = "Bold", italic = false })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 -- no audible bell
 config.audible_bell = "Disabled"
 
-config.font_size = 16
+config.font_size = 14
 config.hide_tab_bar_if_only_one_tab = true
 config.term = "xterm-256color"
 
