@@ -51,18 +51,29 @@ require("lazy").setup({
 		end,
 	},
 
-	{ -- s<char><char> to target, enter to go to next, backspace to prev
-		"ggandor/leap.nvim",
-		config = function()
-			local leap = require("leap")
-			leap.set_default_mappings()
-			leap.opts.preview_filter = function()
-				return false
-			end
-			-- require("leap.user").set_repeat_keys("<enter>", "<backspace>")
-		end,
+  {
+    "aliqyan-21/darkvoid.nvim"
+  },
+
+	{
+		"wnkz/monoglow.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
 	},
 
+	-- { -- s<char><char> to target, enter to go to next, backspace to prev
+	-- 	"ggandor/leap.nvim",
+	-- 	config = function()
+	-- 		local leap = require("leap")
+	-- 		leap.set_default_mappings()
+	-- 		leap.opts.preview_filter = function()
+	-- 			return false
+	-- 		end
+	-- 		-- require("leap.user").set_repeat_keys("<enter>", "<backspace>")
+	-- 	end,
+	-- },
+	--
 	{ -- add pairs automatically
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
@@ -109,6 +120,28 @@ require("lazy").setup({
 	{ -- readline chords in insert
 		"tpope/vim-rsi",
 	},
+  {
+    "f-person/auto-dark-mode.nvim",
+    lazy = false,
+    priority = 1100,
+    config = function()
+      require("auto-dark-mode").setup({
+        -- Optional: Configure theme names for light and dark modes
+        set_dark_mode = function()
+          vim.o.background = "dark"
+          vim.cmd("colorscheme gruvbox")
+        end,
+        set_light_mode = function()
+          vim.o.background = "dark"
+          vim.cmd("colorscheme gruvbox")
+        end,
+        -- Optional: Adjust check frequency (in milliseconds)
+        update_interval = 1000,
+        -- Optional: Fallback appearance if detection fails
+        fallback = "dark",
+      })
+    end,
+  },
 
 	{
 		"stevearc/oil.nvim",
@@ -184,7 +217,7 @@ require("lazy").setup({
 			{ "<leader>n", function() require("snacks").picker.notifications() end, desc = "Notification History", },
 			{ "<leader>ef", function() require("snacks").explorer() end, desc = "File Explorer", },
 			-- find
-			{ "<leader>ff", function() require("snacks").picker.files() end, desc = "Find Files", },
+			{ "<c-p>", function() require("snacks").picker.files() end, desc = "Find Files", },
 			{ "<leader>fg", function() require("snacks").picker.git_files() end, desc = "Find Git Files", },
 			{ "<leader>fp", function() require("snacks").picker.projects() end, desc = "Projects", },
 			{ "<leader>fr", function() require("snacks").picker.recent() end, desc = "Recent", },
@@ -268,24 +301,29 @@ require("lazy").setup({
 		end,
 	},
 
-	{ -- tmux navigation seemless with nvim
-		"christoomey/vim-tmux-navigator",
-		cmd = {
-			"TmuxNavigateLeft",
-			"TmuxNavigateDown",
-			"TmuxNavigateUp",
-			"TmuxNavigateRight",
-			"TmuxNavigatePrevious",
-			"TmuxNavigatorProcessList",
-		},
-		keys = {
-			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-		},
-	},
+	-- { -- tmux navigation seemless with nvim
+	-- 	"christoomey/vim-tmux-navigator",
+	-- 	cmd = {
+	-- 		"TmuxNavigateLeft",
+	-- 		"TmuxNavigateDown",
+	-- 		"TmuxNavigateUp",
+	-- 		"TmuxNavigateRight",
+	-- 		"TmuxNavigatePrevious",
+	-- 		"TmuxNavigatorProcessList",
+	-- 	},
+	-- 	keys = {
+	-- 		{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+	-- 		{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+	-- 		{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+	-- 		{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+	-- 		{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+	-- 	},
+	-- },
+
+  {
+    "mrjones2014/smart-splits.nvim",
+    lazy = false,
+  },
 
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
@@ -497,7 +535,8 @@ require("lazy").setup({
 			-- end,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				go = { "goimports" },
+				go = { "goimports", "gofumpt" },
+				sql = { "pg_format" },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--
@@ -643,9 +682,9 @@ require("lazy").setup({
         bold = true,
         italic = {
           strings = true,
-          emphasis = false,
+          emphasis = true,
           comments = true,
-          operators = false,
+          operators = true,
           folds = true,
         },
         strikethrough = true,
@@ -653,13 +692,13 @@ require("lazy").setup({
         invert_signs = false,
         invert_tabline = false,
         inverse = true, -- invert background for search, diffs, statuslines and errors
-        contrast = "", -- can be "hard", "soft" or empty string
+        contrast = "hard", -- can be "hard", "soft" or empty string
         palette_overrides = {},
-        overrides = {},
+        overrides = { },
         dim_inactive = false,
         transparent_mode = false,
       })
-      require("gruvbox").load()
+      -- require("gruvbox").load()
     end
 	},
   {
@@ -670,8 +709,8 @@ require("lazy").setup({
     config = function()
       require("catppuccin").setup({
         flavour = "latte",
-        no_italic = true,
-        no_bold = true,
+        no_italic = false,
+        no_bold = false,
         show_end_of_buffer = true,
         float = {
           transparent = true, -- enable transparent floating windows
@@ -768,3 +807,9 @@ require("lazy").setup({
 		opts = { signs = false },
 	},
 })
+
+vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
+vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
+vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up)
+vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
+vim.keymap.set('n', '<C-\\>', require('smart-splits').move_cursor_previous)

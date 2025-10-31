@@ -27,7 +27,7 @@ export ZINIT_HOME="${XDG_DATA_HOME}/zinit/zinit.git"
 
 # FZF stuff
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+export FZF_CTRL_T_COMMAND='fd -td'
 
 # Bat
 export BAT_THEME="gruvbox-dark"
@@ -62,18 +62,21 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 # zini stuff
-source "${ZINIT_HOME}/zinit.zsh"
+# source "${ZINIT_HOME}/zinit.zsh"
 # zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
+# zinit light zsh-users/zsh-completions
+# zinit light zsh-users/zsh-autocomplete
+# zinit light zsh-users/zsh-autosuggestions
+# zinit light Aloxaf/fzf-tab
 
 # add autocompletions
 autoload -Uz compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':autocomplete:*' default-context history-incremental-search-backward
 
 # zinit wants this...
-zinit cdreplay -q
+# zinit cdreplay -q
 
 # Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
 export KEYTIMEOUT=1
@@ -85,10 +88,13 @@ export LANG=en_US.UTF-8
 bindkey -e
 bindkey "^p" history-search-backward
 bindkey "^n" history-search-forward
+export WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>'
+bindkey "^w" backward-delete-word
 
 # system aliases
 alias e='nvim'
 alias vi='NVIM_APPNAME="minvim" nvim'
+alias mvi='NVIM_APPNAME="nvim-minimax" nvim'
 alias vdiff="nvim -d"
 alias less='less -R' # pass escape chars through
 alias c='clear'
@@ -111,6 +117,10 @@ alias ta='tmux attach -t'
 #alias pbpaste='xclip -selection clipboard -o'
 # fix watch
 alias watch="watch "
+# use gsed instead of macos sed for compat. brew install gnu-sed
+if command -v gsed >/dev/null 2>&1; then
+  alias sed='gsed'
+fi
 
 # remove things like ^M on enter for interactive CLIs
 stty sane
