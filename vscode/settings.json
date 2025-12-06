@@ -1,0 +1,52 @@
+{
+    "editor.fontFamily": "'JetBrainsMono Nerd Font',Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": false,
+    "editor.fontSize": 12,
+    "editor.fontWeight": 700,
+    "editor.formatOnSave": true,
+    "editor.minimap.enabled": false,
+    "editor.semanticHighlighting.enabled": true,
+    "editor.tabCompletion": "on",
+    "files.autoSave": "onFocusChange",
+    "git.confirmSync": false,
+    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.fontWeight": 700,
+    // prevent VSCode from modifying the terminal colors
+    "terminal.integrated.minimumContrastRatio": 1,
+    "window.autoDetectColorScheme": true,
+    "window.titleBarStyle": "custom",
+    "workbench.colorTheme": "Catppuccin Latte",
+    "workbench.iconTheme": "catppuccin-latte",
+    "workbench.preferredDarkColorTheme": "Catppuccin Macchiato",
+    "workbench.preferredLightColorTheme": "Catppuccin Latte",
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "workbench.startupEditor": "none",
+    // Plugins
+    //
+    // csharp + dotnet
+    "[csharp]": {
+        "editor.defaultFormatter": "csharpier.csharpier-vscode"
+    },
+    "dotnetAcquisitionExtension.enableTelemetry": false,
+    // vim (not neovim)
+    "vim.useSystemClipboard": true,
+    "vim.enableNeovim": true,
+    // golang
+    "go.formatTool": "gofumpt",
+    "go.lintOnSave": "workspace",
+    "go.lintTool": "golangci-lint-v2",
+    // catppuccin suggests this
+    "gopls": {
+        "ui.semanticTokens": true
+    },
+    // yaml
+    "redhat.telemetry.enabled": false,
+    "vim.neovimConfigPath": "~/.config/minvim/init.lua",
+    "vim.neovimUseConfigFile": true,
+    "vim.neovimPath": "/opt/homebrew/bin/nvim",
+    "cSpell.enabledFileTypes": {
+        "*": false
+    },
+    "catppuccin.accentColor": "rosewater",
+    "editor.allowVariableFontsInAccessibilityMode": true,
+}

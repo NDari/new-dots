@@ -101,6 +101,7 @@ alias c='clear'
 alias enw='emacs -nw'
 alias ls='ls --color=always'
 alias h='history | fzf'
+alias we='e $WEZTERM_CONFIG_DIR/wezterm.lua'
 # git
 alias ga='git add'
 alias gd='git diff'

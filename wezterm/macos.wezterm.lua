@@ -20,10 +20,12 @@ end
 local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		-- return "One Dark (Gogh)" -- Replace with your preferred dark theme
-		return "Gruvbox Dark (Gogh)" -- Replace with your preferred dark theme
+		-- return "Gruvbox Dark (Gogh)" -- Replace with your preferred dark theme
+    return "Catppuccin Mocha"
 	else
 		-- return "One Light (Gogh)" -- Replace with your preferred light theme
-		return "Gruvbox Dark (Gogh)" -- Replace with your preferred light theme
+		-- return "Gruvbox Dark (Gogh)" -- Replace with your preferred light theme
+    return "Catppuccin Latte"
 	end
 end
 
@@ -34,8 +36,9 @@ end
 -- config.color_scheme = "Catppuccin Latte (Gogh)"
 config.color_scheme = scheme_for_appearance(get_appearance())
 
--- config.font = wezterm.font("FiraCode Nerd Font", { weight = "Bold", italic = false })
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold", italic = false })
+-- config.font = wezterm.font("ZedMono Nerd Font", { weight = 1000, italic = false })
+-- config.font = wezterm.font("FiraCode Nerd Font Mono", { weight = 600, italic = false })
 -- config.font = wezterm.font("Hasklig", { weight = "Bold", italic = false })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 

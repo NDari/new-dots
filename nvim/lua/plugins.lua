@@ -129,11 +129,11 @@ require("lazy").setup({
         -- Optional: Configure theme names for light and dark modes
         set_dark_mode = function()
           vim.o.background = "dark"
-          vim.cmd("colorscheme gruvbox")
+          vim.cmd("colorscheme catppuccin-mocha")
         end,
         set_light_mode = function()
-          vim.o.background = "dark"
-          vim.cmd("colorscheme gruvbox")
+          vim.o.background = "light"
+          vim.cmd("colorscheme catppuccin-latte")
         end,
         -- Optional: Adjust check frequency (in milliseconds)
         update_interval = 1000,
