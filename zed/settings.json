@@ -1,0 +1,34 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "preferred_line_length": 100,
+  "auto_signature_help": true,
+  "ui_font_family": ".ZedSans",
+  "redact_private_values": true,
+  "use_system_path_prompts": true,
+  "on_last_window_closed": "quit_app",
+  "when_closing_with_no_tabs": "keep_window_open",
+  "relative_line_numbers": "enabled",
+  "vim_mode": true,
+  "terminal": {
+    "font_size": 14.0
+  },
+  "base_keymap": "VSCode",
+  "minimap": {
+    "show": "never"
+  },
+  "autosave": "on_focus_change",
+  "buffer_font_weight": 550.0,
+  "buffer_font_fallbacks": ["JetBrainsMono Nerd Font", "Menlo", "Monaco", "Courier New"],
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "icon_theme": "Catppuccin Latte",
+  "ui_font_size": 16,
+  "buffer_font_size": 14.0,
+  "theme": "Catppuccin Latte"
+}

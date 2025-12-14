@@ -113,7 +113,7 @@ require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
-			theme = "gruvbox",
+			theme = "onelight",
 		},
 	},
 
@@ -123,22 +123,22 @@ require("lazy").setup({
   {
     "f-person/auto-dark-mode.nvim",
     lazy = false,
-    priority = 1100,
+    priority = 1000,
     config = function()
       require("auto-dark-mode").setup({
         -- Optional: Configure theme names for light and dark modes
         set_dark_mode = function()
           vim.o.background = "dark"
-          vim.cmd("colorscheme catppuccin-mocha")
+          vim.cmd("colorscheme onedark")
         end,
         set_light_mode = function()
           vim.o.background = "light"
-          vim.cmd("colorscheme catppuccin-latte")
+          vim.cmd("colorscheme onedark")
         end,
         -- Optional: Adjust check frequency (in milliseconds)
         update_interval = 1000,
         -- Optional: Fallback appearance if detection fails
-        fallback = "dark",
+        fallback = "light",
       })
     end,
   },
@@ -798,6 +798,10 @@ require("lazy").setup({
       -- Enable theme
       -- require('onedark').load()
     end
+  },
+
+  {
+    "RRethy/base16-nvim",
   },
 
 	{ -- Highlight todo, notes, etc in comments

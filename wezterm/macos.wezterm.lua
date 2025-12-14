@@ -20,12 +20,15 @@ end
 local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		-- return "One Dark (Gogh)" -- Replace with your preferred dark theme
+		return "OneDark (base16)" -- Replace with your preferred dark theme
 		-- return "Gruvbox Dark (Gogh)" -- Replace with your preferred dark theme
-    return "Catppuccin Mocha"
+    -- return "Catppuccin Frappe"
 	else
+		return "One Light (base16)" -- Replace with your preferred light theme
 		-- return "One Light (Gogh)" -- Replace with your preferred light theme
 		-- return "Gruvbox Dark (Gogh)" -- Replace with your preferred light theme
-    return "Catppuccin Latte"
+    -- return "Catppuccin Latte"
+    -- return "Catppuccin Mocha"
 	end
 end
 
@@ -61,10 +64,6 @@ config.keys = {
 	{ key = "d", mods = "CMD", action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
 	{ key = "z", mods = "CMD", action = "TogglePaneZoomState" },
 	{ key = "t", mods = "CMD", action = act({ SpawnTab = "CurrentPaneDomain" }) },
-	-- { key = "h", mods = "CMD", action = act({ ActivatePaneDirection = "Left" }) },
-	-- { key = "j", mods = "CMD", action = act({ ActivatePaneDirection = "Down" }) },
-	-- { key = "k", mods = "CMD", action = act({ ActivatePaneDirection = "Up" }) },
-	-- { key = "l", mods = "CMD", action = act({ ActivatePaneDirection = "Right" }) },
 	{ key = "0", mods = "CMD", action = act.ShowDebugOverlay },
 	{ key = "1", mods = "CMD", action = act({ ActivateTab = 0 }) },
 	{ key = "2", mods = "CMD", action = act({ ActivateTab = 1 }) },
@@ -84,8 +83,7 @@ config.keys = {
   -- { key = 'l', mods = 'ALT', action = act.SendKey({ key = 'RightArrow', mods = 'ALT' }) },
 
 	-- This is to be able to hit shift enter without executing commands.
-	-- disabled for now until I do some research
-	-- { key = "Enter", mods = "SHIFT", action = wezterm.action({ SendString = "\x1b\r" }) },
+	{ key = "Enter", mods = "SHIFT", action = wezterm.action({ SendString = "\x1b\r" }) },
 }
 
 -- you can put the rest of your Wezterm config here
