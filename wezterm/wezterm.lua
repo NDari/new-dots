@@ -1,37 +1,59 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
-local mux = wezterm.mux
 local act = wezterm.action
 
--- start in full screen
--- wezterm.on("gui-startup", function(cmd)
--- 	local tab, pane, window = mux.spawn_window(cmd or {})
--- 	window:gui_window():maximize()
--- end)
+-- plugins
+local smart_splits = wezterm.plugin.require('https://github.com/mrjones2014/smart-splits.nvim')
+
+-- This will hold the configuration.
+local config = wezterm.config_builder()
 
 -- utility for configs changings based on OS
 local is_windows = function()
 	return wezterm.target_triple:find("windows") ~= nil
 end
 
--- This will hold the configuration.
-local config = wezterm.config_builder()
+local function get_appearance()
+	if wezterm.gui then
+		-- "Dark" or "Light" are typical return values, but check your OS if it fails
+		return wezterm.gui.get_appearance()
+	end
+	-- Default to dark if wezterm.gui is not available
+	return "Dark"
+end
+
+local function scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		-- return "One Dark (Gogh)" -- Replace with your preferred dark theme
+		-- return "OneDark (base16)" -- Replace with your preferred dark theme
+		return "Gruvbox Dark (Gogh)" -- Replace with your preferred dark theme
+    -- return "Catppuccin Frappe"
+	else
+		-- return "One Light (base16)" -- Replace with your preferred light theme
+		-- return "One Light (Gogh)" -- Replace with your preferred light theme
+		return "Gruvbox Dark (Gogh)" -- Replace with your preferred light theme
+    -- return "Catppuccin Latte"
+    -- return "Catppuccin Mocha"
+	end
+end
 
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
--- config.color_scheme = "Catppuccin Latte (Gogh)"
-config.color_scheme = "Gruvbox Dark (Gogh)"
 
--- config.font = wezterm.font("FiraCode Nerd Font", { weight = "Bold", italic = false })
+-- config.color_scheme = "Catppuccin Latte (Gogh)"
+config.color_scheme = scheme_for_appearance(get_appearance())
+
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold", italic = false })
+-- config.font = wezterm.font("ZedMono Nerd Font", { weight = 1000, italic = false })
+-- config.font = wezterm.font("FiraCode Nerd Font Mono", { weight = 600, italic = false })
 -- config.font = wezterm.font("Hasklig", { weight = "Bold", italic = false })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 -- no audible bell
 config.audible_bell = "Disabled"
 
-config.font_size = 14
+config.font_size = 12
 config.hide_tab_bar_if_only_one_tab = true
 config.term = "xterm-256color"
 
@@ -60,6 +82,8 @@ config.keys = {
 	{ key = "c", mods = "LEADER", action = act({ CopyTo = "Clipboard" }) },
 	{ key = "v", mods = "CMD", action = act({ PasteFrom = "Clipboard" }) },
 	{ key = "c", mods = "CMD", action = act({ CopyTo = "Clipboard" }) },
+
+	{ key = "Enter", mods = "SHIFT", action = wezterm.action({ SendString = "\x1b\r" }) },
 }
 
 config.wsl_domains = {

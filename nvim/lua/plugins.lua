@@ -113,7 +113,7 @@ require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
-			theme = "onelight",
+			theme = "gruvbox",
 		},
 	},
 
@@ -129,11 +129,11 @@ require("lazy").setup({
         -- Optional: Configure theme names for light and dark modes
         set_dark_mode = function()
           vim.o.background = "dark"
-          vim.cmd("colorscheme onedark")
+          vim.cmd("colorscheme gruvbox")
         end,
         set_light_mode = function()
           vim.o.background = "light"
-          vim.cmd("colorscheme onedark")
+          vim.cmd("colorscheme gruvbox")
         end,
         -- Optional: Adjust check frequency (in milliseconds)
         update_interval = 1000,
@@ -328,7 +328,7 @@ require("lazy").setup({
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		main = "nvim-treesitter.configs", -- Sets main module to use for opts
+		main = "nvim-treesitter.config", -- Sets main module to use for opts
 		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 		opts = {
 			ensure_installed = {
