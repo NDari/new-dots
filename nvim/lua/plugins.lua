@@ -123,7 +123,6 @@ require("lazy").setup({
   {
     "f-person/auto-dark-mode.nvim",
     lazy = false,
-    priority = 1000,
     config = function()
       require("auto-dark-mode").setup({
         -- Optional: Configure theme names for light and dark modes
@@ -132,13 +131,13 @@ require("lazy").setup({
           vim.cmd("colorscheme gruvbox")
         end,
         set_light_mode = function()
-          vim.o.background = "light"
+          vim.o.background = "dark"
           vim.cmd("colorscheme gruvbox")
         end,
         -- Optional: Adjust check frequency (in milliseconds)
         update_interval = 1000,
         -- Optional: Fallback appearance if detection fails
-        fallback = "light",
+        fallback = "dark",
       })
     end,
   },
@@ -328,7 +327,7 @@ require("lazy").setup({
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		main = "nvim-treesitter.config", -- Sets main module to use for opts
+		main = "nvim-treesitter.configs", -- Sets main module to use for opts
 		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 		opts = {
 			ensure_installed = {
@@ -759,7 +758,7 @@ require("lazy").setup({
       require('onedark').setup  {
           -- Main options --
           style = 'dark', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-          transparent = false,  -- Show/hide background
+          transparent = true,  -- Show/hide background
           term_colors = true, -- Change terminal color as per the selected theme style
           ending_tildes = true, -- Show the end-of-buffer tildes. By default they are hidden
           cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu

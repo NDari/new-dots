@@ -20,15 +20,18 @@ end
 local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		-- return "One Dark (Gogh)" -- Replace with your preferred dark theme
-		return "OneDark (base16)" -- Replace with your preferred dark theme
-		-- return "Gruvbox Dark (Gogh)" -- Replace with your preferred dark theme
-    -- return "Catppuccin Frappe"
-	else
-		return "One Light (base16)" -- Replace with your preferred light theme
+		-- return "OneDark (base16)" -- Replace with your preferred dark theme
 		-- return "One Light (Gogh)" -- Replace with your preferred light theme
-		-- return "Gruvbox Dark (Gogh)" -- Replace with your preferred light theme
+		return "Gruvbox Dark (Gogh)" -- Replace with your preferred dark theme
+    -- return "Catppuccin Frappe"
+    -- return "Catppuccin Latte"
+	else
+		-- return "One Light (Gogh)" -- Replace with your preferred light theme
+		-- return "One Dark (base16)" -- Replace with your preferred light theme
+		return "Gruvbox Dark (Gogh)" -- Replace with your preferred light theme
     -- return "Catppuccin Latte"
     -- return "Catppuccin Mocha"
+    -- return "Catppuccin Frappe"
 	end
 end
 
