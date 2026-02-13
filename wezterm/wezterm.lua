@@ -53,7 +53,7 @@ config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 -- no audible bell
 config.audible_bell = "Disabled"
 
-config.font_size = 12
+config.font_size = 16
 config.hide_tab_bar_if_only_one_tab = true
 config.term = "xterm-256color"
 

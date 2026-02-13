@@ -1,6 +1,16 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR DOTS:/home/ndari/dotfiles
+SETUVAR EDITOR:nvim
+SETUVAR GOBIN:/home/ndari/go/bin
+SETUVAR GOCACHE:/home/ndari/\x2ecache/go\x2dbuild
+SETUVAR GOMODCACHE:/home/ndari/go/pkg/mod
+SETUVAR --path GOPATH:/home/ndari/go
+SETUVAR VISUAL:nvim
+SETUVAR XDG_CACHE_HOME:/home/ndari/\x2ecache
+SETUVAR XDG_CONFIG_HOME:/home/ndari/\x2econfig
+SETUVAR XDG_DATA_HOME:/home/ndari/\x2elocal/share
+SETUVAR XDG_STATE_HOME:/home/ndari/\x2elocal/state
 SETUVAR __done_min_cmd_duration:10000
 SETUVAR __done_notification_urgency_level:low
 SETUVAR __fish_initialized:4300

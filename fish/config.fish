@@ -2,19 +2,19 @@
 
 # variables
 set -U DOTS {$HOME}/dotfiles
-#
-# set -gx XDG_CONFIG_HOME $HOME/.config
-# set -gx XDG_DATA_HOME $HOME/.local/share
-# set -gx XDG_CACHE_HOME $HOME/.cache
-# set -gx XDG_STATE_HOME $HOME/.local/state
-# set -gx
-# set -gx EDITOR "nvim"
-# set -gx VISUAL "nvim"
-# set -gx
-# set -gx GOPATH $HOME/go
-# set -gx GOBIN $GOPATH/bin # has to be abs or use $GOPATH
-# set -gx GOMODCACHE $GOPATH/pkg/mod
-# set -gx GOCACHE $XDG_CACHE_HOME/go-build
+
+set -U XDG_CONFIG_HOME $HOME/.config
+set -U XDG_DATA_HOME $HOME/.local/share
+set -U XDG_CACHE_HOME $HOME/.cache
+set -U XDG_STATE_HOME $HOME/.local/state
+
+set -U EDITOR "nvim"
+set -U VISUAL "nvim"
+
+set -U GOPATH $HOME/go
+set -U GOBIN $GOPATH/bin # has to be abs or use $GOPATH
+set -U GOMODCACHE $GOPATH/pkg/mod
+set -U GOCACHE $XDG_CACHE_HOME/go-build
 
 # paths
 
@@ -31,7 +31,7 @@ abbr --add c 'clear'
 abbr --add enw 'emacs -nw'
 abbr --add ls 'ls --color=always'
 abbr --add h 'history | fzf'
-abbr --add we 'e $WEZTERM_CONFIG_DIR/wezterm.lua'
+abbr --add we '$EDITOR $WEZTERM_CONFIG_DIR/wezterm.lua'
 # --add git
 abbr --add ga 'git add'
 abbr --add gd 'git diff'
