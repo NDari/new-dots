@@ -50,3 +50,8 @@ abbr --add ta 'tmux attach -t'
 abbr --add watch "watch "
 # pacman
 abbr --add search "pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --height 50%"
+
+# start things if they exist
+if type -q starship
+    starship init fish | source
+end
