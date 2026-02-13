@@ -1,7 +1,7 @@
 # source /usr/share/cachyos-fish-config/cachyos-config.fish
 
 # variables
-# set -gx DOTS {$HOME}/dotfiles
+set -U DOTS {$HOME}/dotfiles
 #
 # set -gx XDG_CONFIG_HOME $HOME/.config
 # set -gx XDG_DATA_HOME $HOME/.local/share
@@ -52,6 +52,11 @@ abbr --add watch "watch "
 abbr --add search "pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --height 50%"
 
 # start things if they exist
-if type -q starship
-    starship init fish | source
+# if type -q starship
+#     starship init fish | source
+# end
+
+if type -q oh-my-posh
+    oh-my-posh init fish --config {$DOTS}/oh-my-posh/term-theme.toml | source
 end
+
