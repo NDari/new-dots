@@ -1,7 +1,7 @@
 {
     "editor.fontFamily": "'JetBrainsMono Nerd Font',Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": false,
-    "editor.fontSize": 12,
+    "editor.fontSize": 16,
     "editor.fontWeight": 700,
     "editor.formatOnSave": true,
     "editor.minimap.enabled": false,
@@ -16,7 +16,6 @@
     "window.autoDetectColorScheme": true,
     "window.titleBarStyle": "custom",
     "workbench.colorTheme": "Gruvbox Dark Hard",
-    "workbench.iconTheme": "catppuccin-latte",
     "workbench.preferredDarkColorTheme": "Gruvbox Dark Hard",
     "workbench.preferredLightColorTheme": "Catppuccin Latte",
     "workbench.secondarySideBar.defaultVisibility": "hidden",
@@ -31,6 +30,10 @@
     // vim (not neovim)
     "vim.useSystemClipboard": true,
     "vim.enableNeovim": true,
+    // neovim
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
     // golang
     "go.formatTool": "gofumpt",
     "go.lintOnSave": "workspace",
@@ -43,10 +46,10 @@
     "redhat.telemetry.enabled": false,
     "vim.neovimConfigPath": "~/.config/minvim/init.lua",
     "vim.neovimUseConfigFile": true,
-    "vim.neovimPath": "/opt/homebrew/bin/nvim",
     "cSpell.enabledFileTypes": {
         "*": false
     },
     "catppuccin.accentColor": "rosewater",
     "editor.allowVariableFontsInAccessibilityMode": true,
+    "security.workspace.trust.untrustedFiles": "open",
 }

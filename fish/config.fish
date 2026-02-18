@@ -9,6 +9,7 @@ set -U XDG_CACHE_HOME $HOME/.cache
 set -U XDG_STATE_HOME $HOME/.local/state
 
 set -U EDITOR "nvim"
+set -gx EDITOR "nvim"
 set -U VISUAL "nvim"
 
 set -U GOPATH $HOME/go
