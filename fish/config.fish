@@ -17,8 +17,20 @@ set -U GOBIN $GOPATH/bin # has to be abs or use $GOPATH
 set -U GOMODCACHE $GOPATH/pkg/mod
 set -U GOCACHE $XDG_CACHE_HOME/go-build
 
-# paths
+# aliases
+if test (uname) = "Darwin"
+    # macOS — pbcopy and pbpaste are already available natively, nothing to do
+else if test (uname) = "Linux"
+    if set -q WAYLAND_DISPLAY
+        alias pbcopy  "wl-copy"
+        alias pbpaste "wl-paste -n"
+    else if set -q DISPLAY
+        alias pbcopy  "xclip -selection clipboard -in"
+        alias pbpaste "xclip -selection clipboard -out"
+    end
+end
 
+# paths
 fish_add_path -U {$HOME}/.cargo/bin
 fish_add_path -U {$HOME}/go/bin
 
