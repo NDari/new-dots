@@ -10,8 +10,8 @@ opacity = 1.0
 decorations_theme_variant = "Dark"
 
 [window.dimensions]
-columns = 100
-lines = 50
+columns = 250
+lines = 60
 
 [window.class]
 instance = "Alacritty"
@@ -56,7 +56,7 @@ cyan    = '#8ec07c'
 white   = '#ebdbb2'
 
 [font]
-size = 10
+size = 11
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
@@ -92,6 +92,11 @@ mouse = "Middle"
 action = "PasteSelection"
 
 [keyboard]
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001b\r"
+
 [[keyboard.bindings]]
 key = "Paste"
 action = "Paste"

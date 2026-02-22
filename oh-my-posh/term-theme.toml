@@ -40,7 +40,7 @@ final_space = true
       style = 'full'
 
   [[blocks.segments]]
-    template = '| {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }} *{{ end }}'
+    template = '| {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }} *{{ end }} '
     foreground = 'red'
     background = 'transparent'
     type = 'git'
@@ -51,6 +51,17 @@ final_space = true
       cache_duration = 'none'
       commit_icon = '@'
       fetch_status = true
+
+  [[blocks.segments]]
+    template = '| {{ .FormattedMs }}'
+    foreground = 'yellow'
+    background = 'transparent'
+    type = 'executiontime'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      threshold = 0
+      style = 'austin'
 
 [[blocks]]
   type = 'prompt'
