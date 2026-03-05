@@ -1,0 +1,33 @@
+# Font
+font-family = JetBrainsMono Nerd Font
+font-style = Bold Italic
+font-style-bold = Bold Italic
+font-style-italic = Bold Italic
+font-style-bold-italic = Bold Italic
+font-size = 11
+
+# Window
+window-padding-balance = true
+window-decoration = auto
+window-theme = dark
+window-height = 60
+window-width = 250
+
+# Colors (Gruvbox dark)
+theme = Gruvbox Dark Hard
+
+# Cursor
+cursor-style = underline
+cursor-style-blink = false
+cursor-opacity = 1.0
+
+# Scrolling
+scrollback-limit = 10000
+mouse-scroll-multiplier = 3
+
+# Mouse
+mouse-hide-while-typing = true
+copy-on-select = true
+
+# Keybinds
+keybind = shift+enter=text:\x1b\x0d
