@@ -1,5 +1,5 @@
 # Font
-font-family = JetBrainsMono Nerd Font
+font-family = JetBrainsMonoNL Nerd Font
 font-style = Bold Italic
 font-style-bold = Bold Italic
 font-style-italic = Bold Italic
@@ -10,8 +10,8 @@ font-size = 11
 window-padding-balance = true
 window-decoration = auto
 window-theme = dark
-window-height = 60
-window-width = 250
+window-height = 50
+window-width = 200
 
 # Colors (Gruvbox dark)
 theme = Gruvbox Dark Hard
