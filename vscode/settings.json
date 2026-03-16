@@ -1,8 +1,20 @@
 {
     "editor.fontFamily": "'JetBrainsMono Nerd Font',Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": false,
-    "editor.fontSize": 16,
-    "editor.fontWeight": 700,
+    "editor.fontWeight": "bold",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "source",
+                    "text",
+                ],
+                "settings": {
+                    "fontStyle": "italic"
+                }
+            }
+        ]
+    },
     "editor.formatOnSave": true,
     "editor.minimap.enabled": false,
     "editor.semanticHighlighting.enabled": true,
@@ -16,7 +28,7 @@
     "window.autoDetectColorScheme": true,
     "window.titleBarStyle": "custom",
     "workbench.colorTheme": "Gruvbox Dark Hard",
-    "workbench.preferredDarkColorTheme": "Gruvbox Dark Hard",
+    "workbench.preferredDarkColorTheme": "Catppuccin Latte",
     "workbench.preferredLightColorTheme": "Catppuccin Latte",
     "workbench.secondarySideBar.defaultVisibility": "hidden",
     "workbench.startupEditor": "none",
