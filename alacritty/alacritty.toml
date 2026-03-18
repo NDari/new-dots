@@ -56,7 +56,7 @@ cyan    = '#8ec07c'
 white   = '#ebdbb2'
 
 [font]
-size = 11
+size = 14
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
