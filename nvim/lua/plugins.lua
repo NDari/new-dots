@@ -128,11 +128,11 @@ require("lazy").setup({
         -- Optional: Configure theme names for light and dark modes
         set_dark_mode = function()
           vim.o.background = "dark"
-          vim.cmd("colorscheme gruvbox")
+          vim.cmd("colorscheme Catppuccin-frappe")
         end,
         set_light_mode = function()
           vim.o.background = "dark"
-          vim.cmd("colorscheme gruvbox")
+          vim.cmd("colorscheme Catppuccin-latte")
         end,
         -- Optional: Adjust check frequency (in milliseconds)
         update_interval = 1000,
@@ -177,7 +177,9 @@ require("lazy").setup({
       -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
       ---@module 'render-markdown'
       ---@type render.md.UserConfig
-      opts = {},
+      opts = {
+          anti_conceal = { enabled = false },
+      },
   },
 
 	{
