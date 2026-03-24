@@ -17,6 +17,9 @@ set -U GOBIN $GOPATH/bin # has to be abs or use $GOPATH
 set -U GOMODCACHE $GOPATH/pkg/mod
 set -U GOCACHE $XDG_CACHE_HOME/go-build
 
+# disable welcome
+set -U fish_greeting ""
+
 # aliases
 if test (uname) = "Darwin"
     # macOS — pbcopy and pbpaste are already available natively, nothing to do
@@ -33,6 +36,7 @@ end
 # paths
 fish_add_path -U {$HOME}/.cargo/bin
 fish_add_path -U {$HOME}/go/bin
+fish_add_path -U {$HOME}/.local/bin
 
 # abbrs
 abbr --add e 'nvim'
