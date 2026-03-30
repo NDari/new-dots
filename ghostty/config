@@ -1,10 +1,10 @@
 # Font
 font-family = JetBrainsMonoNL Nerd Font
-font-style = Bold Italic
-font-style-bold = Bold Italic
-font-style-italic = Bold Italic
-font-style-bold-italic = Bold Italic
-font-size = 14
+font-style = Bold
+font-style-bold = Bold
+font-style-italic = Bold
+font-style-bold-italic = Bold
+font-size = 12
 
 # Window
 window-padding-balance = true
@@ -14,10 +14,11 @@ window-height = 50
 window-width = 200
 
 # Colors (Gruvbox dark)
-theme = Gruvbox Dark Hard
+# theme = Gruvbox Dark Hard
+theme = Catppuccin Frappe
 
 # Cursor
-cursor-style = underline
+cursor-style = block
 cursor-style-blink = false
 cursor-opacity = 1.0
 
@@ -29,5 +30,30 @@ mouse-scroll-multiplier = 3
 mouse-hide-while-typing = true
 copy-on-select = true
 
-# Keybinds
+# Keybinds, general
 keybind = shift+enter=text:\x1b\x0d
+
+# nav
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+l=goto_split:right
+keybind = ctrl+j=goto_split:bottom
+keybind = ctrl+k=goto_split:top
+
+# Tmux-like Keybindings (Prefix: Ctrl+S)
+# New window (Ghostty uses tabs for windows)
+keybind = ctrl+s>c=new_tab
+
+# Split panes
+# '\' for horizontal split (side-by-side)
+keybind = ctrl+s>\=new_split:right
+# '-' for vertical split (top and bottom)
+keybind = ctrl+s>-=new_split:down
+
+# Reload Ghostty configuration
+keybind = ctrl+s>r=reload_config
+
+# Optional: Toggle split zoom (Tmux default is Prefix + z)
+keybind = ctrl+s>z=toggle_split_zoom
+
+# Optional: Close the current split or tab (Tmux default is Prefix + x)
+keybind = ctrl+s>x=close_surface
