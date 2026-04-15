@@ -128,11 +128,11 @@ require("lazy").setup({
         -- Optional: Configure theme names for light and dark modes
         set_dark_mode = function()
           vim.o.background = "dark"
-          vim.cmd("colorscheme Catppuccin-frappe")
+          vim.cmd("colorscheme gruvbox")
         end,
         set_light_mode = function()
           vim.o.background = "dark"
-          vim.cmd("colorscheme Catppuccin-latte")
+          vim.cmd("colorscheme gruvbox")
         end,
         -- Optional: Adjust check frequency (in milliseconds)
         update_interval = 1000,
@@ -325,47 +325,6 @@ require("lazy").setup({
     "mrjones2014/smart-splits.nvim",
     lazy = false,
   },
-
-	{ -- Highlight, edit, and navigate code
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		main = "nvim-treesitter.configs", -- Sets main module to use for opts
-		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-		opts = {
-			ensure_installed = {
-				"bash",
-				"c",
-				"diff",
-				"html",
-				"lua",
-				"luadoc",
-				"markdown",
-				"markdown_inline",
-				"query",
-				"vim",
-				"vimdoc",
-        "python",
-        "go",
-        "c_sharp",
-			},
-			-- Autoinstall languages that are not installed
-			auto_install = true,
-			highlight = {
-				enable = true,
-				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-				--  If you are experiencing weird indenting issues, add the language to
-				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
-				additional_vim_regex_highlighting = { "ruby" },
-			},
-			indent = { enable = true, disable = { "ruby" } },
-		},
-		-- There are additional nvim-treesitter modules that you can use to interact
-		-- with nvim-treesitter. You should go explore a few and see what interests you:
-		--
-		--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-	},
 
 	-- LSP Plugins
 	{

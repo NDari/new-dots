@@ -39,12 +39,10 @@ end
 
 -- This is where you actually apply your config choices
 
--- For example, changing the color scheme:
-
 -- config.color_scheme = "Catppuccin Latte (Gogh)"
 config.color_scheme = scheme_for_appearance(get_appearance())
 
-config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold", italic = false })
+config.font = wezterm.font("JetBrainsMonoNL Nerd Font", { weight = "Bold", italic = false })
 -- config.font = wezterm.font("ZedMono Nerd Font", { weight = 1000, italic = false })
 -- config.font = wezterm.font("FiraCode Nerd Font Mono", { weight = 600, italic = true })
 -- config.font = wezterm.font("Hasklig", { weight = "Bold", italic = false })
