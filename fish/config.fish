@@ -40,8 +40,7 @@ fish_add_path -U {$HOME}/.local/bin
 
 # abbrs
 abbr --add e 'nvim'
-abbr --add vi 'NVIM_APPNAME="minvim" nvim'
-abbr --add mvi 'NVIM_APPNAME="nvim-minimax" nvim'
+abbr --add vi "nvim --cmd 'let g:minimal=1'"
 abbr --add vdiff "nvim -d"
 abbr --add less 'less -R' # pass escape chars through
 abbr --add c 'clear'
@@ -55,7 +54,7 @@ abbr --add gd 'git diff'
 abbr --add gst 'git status'
 abbr --add gp 'git push'
 abbr --add gc 'git commit'
-abbr --add gpo 'gp --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
+abbr --add gpo 'git push --set-upstream origin (git rev-parse --abbrev-ref HEAD)'
 # tmux
 abbr --add tns 'tmux new-session -s'
 abbr --add tl 'tmux list-sessions'
@@ -66,7 +65,7 @@ abbr --add ta 'tmux attach -t'
 # fix watch
 abbr --add watch "watch "
 # pacman
-abbr --add search "pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse --height 50%"
+abbr --add search "pacman -Ss | paste -d '' - - | fzf --multi --preview 'pacman -Si {1}' | cut -d ' ' -f 1 | xargs -ro pacman -Si"
 
 # start things if they exist
 # if type -q starship
@@ -77,3 +76,6 @@ if type -q oh-my-posh
     oh-my-posh init fish --config {$DOTS}/oh-my-posh/term-theme.toml | source
 end
 
+if type -q zoxide
+    zoxide init fish | source
+end

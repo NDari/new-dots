@@ -1,10 +1,12 @@
 # Font
 font-family = JetBrainsMonoNL Nerd Font
-font-style = Bold
-font-style-bold = Bold
-font-style-italic = Bold
-font-style-bold-italic = Bold
-font-size = 12
+# font-family = CascadiaMono Nerd Font
+# font-family = IosevkaTerm Nerd Font
+font-style = Bold Italic
+font-style-bold = Bold Italic
+font-style-italic = Bold Italic
+font-style-bold-italic = Bold Italic
+font-size = 11
 
 # Window
 window-padding-balance = true
@@ -18,7 +20,7 @@ theme = Gruvbox Dark Hard
 # theme = Catppuccin Frappe
 
 # Cursor
-cursor-style = block
+cursor-style = bar
 cursor-style-blink = false
 cursor-opacity = 1.0
 
