@@ -1,12 +1,13 @@
 # Font
-font-family = JetBrainsMonoNL Nerd Font
+# font-family = JetBrainsMonoNL Nerd Font
+font-family = Inconsolata Nerd Font
 # font-family = CascadiaMono Nerd Font
 # font-family = IosevkaTerm Nerd Font
-font-style = Bold Italic
-font-style-bold = Bold Italic
-font-style-italic = Bold Italic
-font-style-bold-italic = Bold Italic
-font-size = 11
+font-style = Bold
+font-style-bold = Bold
+font-style-italic = Bold
+font-style-bold-italic = Bold
+font-size = 10
 
 # Window
 window-padding-balance = true
@@ -16,7 +17,8 @@ window-height = 50
 window-width = 200
 
 # Colors (Gruvbox dark)
-theme = Gruvbox Dark Hard
+# theme = Gruvbox Dark Hard
+config-file = ?~/.config/ghostty/themes/current
 # theme = Catppuccin Frappe
 
 # Cursor

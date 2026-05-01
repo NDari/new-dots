@@ -1,0 +1,21 @@
+default-scheme = "base16-gruvbox-dark-hard"
+
+# Ghostty: tinted-terminal hosts ghostty .conf files under themes/ghostty.
+# The hook copies the active one to ~/.config/ghostty/themes/current and
+# signals ghostty to reload.
+# Requires ghostty/config to include:  config-file = ?themes/current
+[[items]]
+path = "https://github.com/tinted-theming/tinted-terminal"
+name = "tinted-terminal"
+themes-dir = "themes/ghostty"
+hook = "mkdir -p \"$HOME/.config/ghostty/themes\" && cp -f %f \"$HOME/.config/ghostty/themes/current\" && pkill -USR2 ghostty || true"
+
+# Neovim: base16-nvim is already installed. It auto-loads from
+# ~/.local/share/tinted-theming/tinty/current_scheme when the plugin's
+# `with_config` helper is used. The shell template below also writes the
+# scheme name to that path so nvim picks it up on next start / :colorscheme.
+[[items]]
+path = "https://github.com/tinted-theming/tinted-shell"
+name = "tinted-shell"
+themes-dir = "scripts"
+hook = ". %f"

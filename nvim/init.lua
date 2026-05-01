@@ -333,35 +333,13 @@ require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
-			theme = "gruvbox",
+			theme = "base16",
 		},
 	},
 
 	{ -- readline chords in insert
 		"tpope/vim-rsi",
 	},
-  {
-    "f-person/auto-dark-mode.nvim",
-    lazy = false,
-    config = function()
-      require("auto-dark-mode").setup({
-        -- Optional: Configure theme names for light and dark modes
-        set_dark_mode = function()
-          vim.o.background = "dark"
-          vim.cmd("colorscheme gruvbox")
-        end,
-        set_light_mode = function()
-          vim.o.background = "dark"
-          vim.cmd("colorscheme gruvbox")
-        end,
-        -- Optional: Adjust check frequency (in milliseconds)
-        update_interval = 1000,
-        -- Optional: Fallback appearance if detection fails
-        fallback = "dark",
-      })
-    end,
-  },
-
 	{
 		"stevearc/oil.nvim",
 		opts = {
@@ -982,6 +960,34 @@ require("lazy").setup({
 
   {
     "RRethy/base16-nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      local scheme_file = vim.fn.expand("~/.local/share/tinted-theming/tinty/current_scheme")
+
+      local function apply_from_tinty()
+        local f = io.open(scheme_file, "r")
+        if not f then return end
+        local name = f:read("*l")
+        f:close()
+        if name and name ~= "" then
+          pcall(vim.cmd.colorscheme, name)
+        end
+      end
+
+      apply_from_tinty()
+
+      local function watch()
+        local w = vim.uv.new_fs_event()
+        if not w then return end
+        w:start(scheme_file, {}, vim.schedule_wrap(function()
+          apply_from_tinty()
+          w:stop()
+          vim.defer_fn(watch, 50)
+        end))
+      end
+      watch()
+    end,
   },
 
 	{ -- Highlight todo, notes, etc in comments
