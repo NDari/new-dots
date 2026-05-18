@@ -397,7 +397,7 @@ require("lazy").setup({
 			picker = { enabled = true },
 			-- quickfile = { enabled = true },
 			-- scope = { enabled = true },
-			-- scratch = { enabled = true },
+			scratch = { enabled = true },
 			-- scroll = { enabled = true },
 			-- statuscolumn = { enabled = true },
 			-- words = { enabled = true },
@@ -463,6 +463,8 @@ require("lazy").setup({
 			{ "gy", function() require("snacks").picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition", },
 			{ "<leader>sS", function() require("snacks").picker.lsp_symbols() end, desc = "LSP Symbols", },
 			{ "<leader>ss", function() require("snacks").picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols", },
+      { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer", },
+      { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer", },
 			-- Other
 			-- { "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" }, },
 			-- { "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" }, },

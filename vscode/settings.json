@@ -28,7 +28,7 @@
     "window.autoDetectColorScheme": true,
     "window.titleBarStyle": "custom",
     "workbench.colorTheme": "Gruvbox Dark Hard",
-    "workbench.preferredDarkColorTheme": "Catppuccin Latte",
+    "workbench.preferredDarkColorTheme": "base16-gruvbox-dark-hard",
     "workbench.preferredLightColorTheme": "Catppuccin Latte",
     "workbench.secondarySideBar.defaultVisibility": "hidden",
     "workbench.startupEditor": "none",
