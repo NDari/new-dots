@@ -13,8 +13,8 @@ font-size = 10
 window-padding-balance = true
 window-decoration = auto
 window-theme = dark
-window-height = 50
-window-width = 200
+window-height = 60
+window-width = 250
 
 # Colors (Gruvbox dark)
 # theme = Gruvbox Dark Hard

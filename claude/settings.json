@@ -1,0 +1,60 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git status)",
+      "Bash(git branch *)",
+      "Bash(git show *)"
+    ]
+  },
+  "enabledPlugins": {
+    "context7@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "serena@claude-plugins-official": true
+  },
+  "effortLevel": "xhigh",
+  "editorMode": "normal",
+  "preferredNotifChannel": "ghostty",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": false,
+  "skipAutoPermissionPrompt": true,
+  "remoteControlAtStartup": true,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "if": "Bash(sed:*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); printf '%s' \"$cmd\" | grep -Eq '^[[:space:]]*sed([[:space:]]|$)' || exit 0; if printf '%s' \"$cmd\" | grep -Eq '^[[:space:]]*sed[[:space:]]+-n([[:space:]]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"allow\",\"permissionDecisionReason\":\"sed -n is read-only\"}}'; else printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"ask\",\"permissionDecisionReason\":\"only sed -n is auto-allowed\"}}'; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "if": "Bash(awk:*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); printf '%s' \"$cmd\" | grep -Eq '^[[:space:]]*(g|m)?awk([[:space:]]|$)' || exit 0; stripped=$(printf '%s' \"$cmd\" | sed -e \"s/'[^']*'//g\" -e 's/\"[^\"]*\"//g'); if printf '%s' \"$cmd\" | grep -Eq 'inplace' || printf '%s' \"$cmd\" | grep -Eq '(^|[[:space:]])(--load|-l)' || printf '%s' \"$cmd\" | grep -Eq 'system[[:space:]]*\\(' || printf '%s' \"$cmd\" | grep -Eq '>>' || printf '%s' \"$cmd\" | grep -Eq '>[[:space:]]*\"' || printf '%s' \"$cmd\" | grep -Eq '\\|[[:space:]]*\"' || printf '%s' \"$cmd\" | grep -Eq '\\|&' || printf '%s' \"$stripped\" | grep -Eq '>'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"ask\",\"permissionDecisionReason\":\"awk writes/executes; only read-only awk is auto-allowed\"}}'; else printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"allow\",\"permissionDecisionReason\":\"awk appears read-only\"}}'; fi"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(jq -r \".tool_input.file_path // empty\"); test -n \"$f\" && test -f \"$f\" && perl -CSD -i -pe \"s/[\\x{2014}\\x{2013}]/-/g\" \"$f\" 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}
