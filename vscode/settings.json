@@ -46,10 +46,9 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
-    // golang
-    "go.formatTool": "gofumpt",
     "go.lintOnSave": "workspace",
-    "go.lintTool": "golangci-lint-v2",
+    "go.lintTool": "golangci-lint",
+    "go.toolsManagement.autoUpdate": true,
     // catppuccin suggests this
     "gopls": {
         "ui.semanticTokens": true
@@ -65,4 +64,7 @@
     "editor.allowVariableFontsInAccessibilityMode": true,
     "security.workspace.trust.untrustedFiles": "open",
     "workbench.iconTheme": "catppuccin-latte",
+    "csv.enabled": true,
+    "vscode-neovim.neovimClean": true,
+    "go.vetOnSave": "workspace",
 }

@@ -55,6 +55,7 @@ abbr --add gst 'git status'
 abbr --add gp 'git push'
 abbr --add gc 'git commit'
 abbr --add gpo 'git push --set-upstream origin (git rev-parse --abbrev-ref HEAD)'
+abbr --add glol 'git log --oneline'
 # tmux
 abbr --add tns 'tmux new-session -s'
 abbr --add tl 'tmux list-sessions'

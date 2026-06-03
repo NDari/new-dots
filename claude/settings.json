@@ -5,28 +5,23 @@
       "Bash(git log *)",
       "Bash(git status)",
       "Bash(git branch *)",
-      "Bash(git show *)"
-    ]
+      "Bash(git show *)",
+      "mcp__plugin_context7_context7__resolve-library-id",
+      "mcp__plugin_context7_context7__query-docs",
+      "Read(//home/ndari/dotfiles/**)",
+      "Read(//home/ndari/dotfiles/ghostty/**)",
+      "Read(//home/ndari/dotfiles/nvim/**)",
+      "Bash(snapper list-configs *)",
+      "Bash(sudo snapper -c root list)",
+      "Bash(sudo btrfs *)",
+      "Skill(update-config)"
+    ],
+    "defaultMode": "auto"
   },
-  "enabledPlugins": {
-    "context7@claude-plugins-official": true,
-    "code-review@claude-plugins-official": true,
-    "claude-md-management@claude-plugins-official": true,
-    "code-simplifier@claude-plugins-official": true,
-    "serena@claude-plugins-official": true
-  },
-  "effortLevel": "xhigh",
-  "editorMode": "normal",
-  "preferredNotifChannel": "ghostty",
-  "inputNeededNotifEnabled": true,
-  "agentPushNotifEnabled": false,
-  "skipAutoPermissionPrompt": true,
-  "remoteControlAtStartup": true,
   "hooks": {
     "PreToolUse": [
       {
         "matcher": "Bash",
-        "if": "Bash(sed:*)",
         "hooks": [
           {
             "type": "command",
@@ -36,7 +31,6 @@
       },
       {
         "matcher": "Bash",
-        "if": "Bash(awk:*)",
         "hooks": [
           {
             "type": "command",
@@ -51,10 +45,25 @@
         "hooks": [
           {
             "type": "command",
-            "command": "f=$(jq -r \".tool_input.file_path // empty\"); test -n \"$f\" && test -f \"$f\" && perl -CSD -i -pe \"s/[\\x{2014}\\x{2013}]/-/g\" \"$f\" 2>/dev/null || true"
+            "command": "python3 \"$HOME/.claude/hooks/normalize-dashes.py\" 2>/dev/null || true"
           }
         ]
       }
     ]
-  }
+  },
+  "enabledPlugins": {
+    "context7@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "serena@claude-plugins-official": true
+  },
+  "effortLevel": "high",
+  "editorMode": "normal",
+  "preferredNotifChannel": "ghostty",
+  "remoteControlAtStartup": true,
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": false,
+  "skipAutoPermissionPrompt": true,
+  "skipWorkflowUsageWarning": true
 }
