@@ -40,3 +40,15 @@ When giving me commands to run in my terminal, write them so they work in **fish
 Never use em-dashes (`—`) or en-dashes (`–`) anywhere in your output: not in chat replies, not in code or comments, and not in files you create or edit. Use a regular hyphen (`-`) instead, and where a hyphen reads awkwardly, rephrase using commas, parentheses, a colon, or separate sentences.
 
 **Why:** I find em-dashes visually disruptive and they read as machine-generated. A plain hyphen or a reworded sentence is always preferable.
+
+## How to work with me (matters most for less capable models)
+
+These are behaviors the best models do by default and weaker ones skip under load. Follow them explicitly.
+
+- **Verify, don't assert.** Before stating a file path, symbol, flag, or that something works, confirm it this session (read the file, run the command). If you're recalling from training or inferring, say so plainly.
+- **Prove "done."** If you claim a change works, run the build/test/lint that shows it. If you can't run it, say what's unverified rather than implying success.
+- **Minimal diffs.** Change only what the task needs; don't reformat, reorder imports, or rewrite untouched code. Match the existing file's style.
+- **Read the actual error.** When a command or tool call fails, read the output before retrying; don't repeat the same call or guess at a fix.
+- **Stay in scope.** Do what was asked. If you spot an unrelated improvement, mention it; don't do it unprompted. Don't add dependencies or new tools without asking first.
+
+**Why:** each of these is a failure mode I hit more with weaker models (hallucinated paths/APIs, false "it works" claims, collateral reformatting, retry loops, scope creep). Stating them in checkable form raises the floor.
