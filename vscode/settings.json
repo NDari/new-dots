@@ -46,12 +46,23 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
+    // golang stuff
+    "[go]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "always",
+            "source.organizeImports": "always"
+        },
+        "editor.defaultFormatter": "golang.go",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+    },
+    "go.lintTool": "golangci-lint-v2",
     "go.lintOnSave": "workspace",
-    "go.lintTool": "golangci-lint",
     "go.toolsManagement.autoUpdate": true,
-    // catppuccin suggests this
+    "go.vetOnSave": "workspace",
     "gopls": {
-        "ui.semanticTokens": true
+        "ui.semanticTokens": true,
+        "ui.diagnostic.staticcheck": true
     },
     // yaml
     "redhat.telemetry.enabled": false,
@@ -66,5 +77,6 @@
     "workbench.iconTheme": "catppuccin-latte",
     "csv.enabled": true,
     "vscode-neovim.neovimClean": true,
-    "go.vetOnSave": "workspace",
+    "markdown-preview-enhanced.previewTheme": "atom-dark.css",
+    "go.alternateTools": {},
 }

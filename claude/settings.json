@@ -15,6 +15,7 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "sonnet",
   "hooks": {
     "PreToolUse": [
       {
@@ -63,7 +64,7 @@
     "claude-md-management@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true
   },
-  "effortLevel": "high",
+  "effortLevel": "medium",
   "skipWorkflowUsageWarning": true,
   "editorMode": "normal",
   "preferredNotifChannel": "ghostty",
@@ -71,5 +72,39 @@
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": false,
   "skipAutoPermissionPrompt": true,
-  "model": "claude-fable-5[1m]"
+  "autoMode": {
+    "soft_deny": [
+      "$defaults",
+      "Bash(ansible-playbook site.yml:*) in /home/ndari/projects/deployment — routine convergence runs are frequent here but should still confirm before host-affecting changes",
+      "Bash(vagrant destroy:*) in /home/ndari/projects/deployment — vagrant used frequently (23×) for local test VMs; destroy is irreversible for local state"
+    ],
+    "environment": [
+      "### Org-wide",
+      "**Organization**: None configured",
+      "**Cloud provider(s)**: None configured",
+      "**Repository visibility**: private (NDari/deployment, confirmed via gh)",
+      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Secrets management**: None configured",
+      "**Default / protected branches**: main (default); no classic protection rules listed, rulesets not queryable here — treat main as protected pending confirmation",
+      "**CI/CD deploy targets**: None configured",
+      "**Network posture**: None configured",
+      "**Source control**: github.com:NDari/deployment.git (this repo's origin) only — no additional orgs configured",
+      "**Trusted internal domains**: None configured",
+      "**Trusted cloud buckets**: None configured",
+      "**Key internal services**: registry.access.redhat.com (contacted 9× this project), catalog.redhat.com, galaxy.ansible.com — contacted repeatedly in this project's transcripts as image/collection registries",
+      "**Internal package registry**: None configured",
+      "**Sensitive data locations & audiences**: fixtures/example-app/.env.example, scripts/bootstrap-secrets.sh, tests/manifest-cases/bad-orphan-generated-secret.toml — treat as sensitive-pattern/example files; preserve exact paths and do not widen sharing beyond this repo's maintainers",
+      "**Data retention / declassification**: None configured",
+      "**Sensitive remote targets**: any namespace, host, or container whose name carries `prod` or `production` as a whole word or name segment (hyphen/underscore/dot-delimited)",
+      "**Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic",
+      "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries `prod` or `production` as a whole word or name segment",
+      "### User-specific",
+      "**Primary use of Claude Code**: software development (Ansible/podman deployment tooling for an app fleet)",
+      "**Trusted repo**: /home/ndari/projects/deployment (this repo) and its origin remote github.com:NDari/deployment.git — private repo, so confidential material is fine to commit here, but secrets and sensitive data are never cleared into it by visibility alone",
+      "**Org-specific CLIs**: None configured",
+      "No git write operations without explicit runtime authorization — CLAUDE.md (global) states the user handles all git writes themselves (add, commit, push, pull, fetch, merge, rebase, reset, checkout that changes tree, stash, tag, branch, switch, restore, cherry-pick, revert, clean) and any write gh subcommand; read-only git/gh commands are fine",
+      "Interactive shell is fish (3.x) — commands meant for the user's own terminal should be fish-compatible; the Bash tool itself runs bash internally",
+      "Workstation is Arch/CachyOS — local package management is pacman/paru (AUR), not apt/dnf/brew; project-specific build/deploy tooling (this repo targets RHEL/EL8/EL9) follows the project's own docs instead"
+    ]
+  }
 }
