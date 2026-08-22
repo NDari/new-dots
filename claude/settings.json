@@ -105,5 +105,6 @@
       "Interactive shell is fish (3.x) — commands meant for the user's own terminal should be fish-compatible; the Bash tool itself runs bash internally",
       "Workstation is Arch/CachyOS — local package management is pacman/paru (AUR), not apt/dnf/brew; project-specific build/deploy tooling (this repo targets RHEL/EL8/EL9) follows the project's own docs instead"
     ]
-  }
+  },
+  "outputStyle": "Concise"
 }
