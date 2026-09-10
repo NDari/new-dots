@@ -33,6 +33,11 @@ else if test (uname) = "Linux"
     end
 end
 
+# use ugrep in place of grep if available
+if type -q ug
+    alias grep "ug"
+end
+
 # paths
 fish_add_path -U {$HOME}/.cargo/bin
 fish_add_path -U {$HOME}/go/bin

@@ -1,0 +1,30 @@
+# Additional protection for direct write commands at the execution-policy
+# layer. These are exact prefixes, not a complete shell/Git parser.
+# The PreToolUse hook handles global options and unknown Git/GitHub forms.
+# Deliberately no automatic out-of-sandbox allowances.
+prefix_rule(
+    pattern = [["git", "/usr/bin/git", "/bin/git"], [
+        "add", "commit", "rm", "mv", "fetch", "pull", "push", "merge",
+        "rebase", "reset", "checkout", "switch", "restore", "stash",
+        "cherry-pick", "revert", "clean", "am", "apply", "init", "clone",
+        "worktree", "update-ref", "symbolic-ref", "update-index",
+        "read-tree", "write-tree", "commit-tree", "hash-object",
+        "gc", "maintenance", "prune", "repack", "filter-branch", "bisect",
+        "submodule", "notes", "replace", "reflog", "config", "remote",
+    ]],
+    decision = "forbidden",
+    justification = "Git writes are handled manually by the user. Use inspection commands and summarize source edits.",
+    match = ["git fetch origin", "/usr/bin/git commit -m example"],
+    not_match = ["git status", "git diff", "git -C /tmp/repo commit -m example"],
+)
+
+prefix_rule(
+    pattern = [["gh", "/usr/bin/gh", "/bin/gh"], ["pr", "issue", "release"], [
+        "create", "merge", "comment", "edit", "close", "delete", "ready",
+        "reopen", "review", "lock", "unlock", "upload", "delete-asset",
+    ]],
+    decision = "forbidden",
+    justification = "GitHub writes are handled manually by the user. Use view, list, or diff.",
+    match = ["gh pr create", "gh issue comment 12 --body example"],
+    not_match = ["gh pr view 12", "gh pr diff 12"],
+)

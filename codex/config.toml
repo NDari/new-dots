@@ -1,0 +1,21 @@
+# Portable defaults. Keep authentication, project trust, model selection, and
+# workstation-specific paths out of this shared file. See README.md.
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+approvals_reviewer = "user"
+
+[sandbox_workspace_write]
+network_access = false
+
+[features]
+hooks = true
+
+[shell_environment_policy.set]
+GIT_OPTIONAL_LOCKS = "0"
+GIT_PAGER = "cat"
+GH_PAGER = "cat"
+
+# Connected apps have a separate approval surface from the local shell.
+[apps._default]
+approvals_reviewer = "user"
+default_tools_approval_mode = "writes"

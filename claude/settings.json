@@ -15,6 +15,7 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "claude-fable-5-1[1m]",
   "hooks": {
     "PreToolUse": [
       {
@@ -63,7 +64,16 @@
     "claude-md-management@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true
   },
+  "outputStyle": "Concise",
   "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-sonnet-5": {
+      "effortLevel": "high"
+    },
+    "claude-fable-5-1": {
+      "effortLevel": "high"
+    }
+  },
   "skipWorkflowUsageWarning": true,
   "editorMode": "normal",
   "preferredNotifChannel": "ghostty",
@@ -102,9 +112,8 @@
       "**Trusted repo**: /home/ndari/projects/deployment (this repo) and its origin remote github.com:NDari/deployment.git — private repo, so confidential material is fine to commit here, but secrets and sensitive data are never cleared into it by visibility alone",
       "**Org-specific CLIs**: None configured",
       "No git write operations without explicit runtime authorization — CLAUDE.md (global) states the user handles all git writes themselves (add, commit, push, pull, fetch, merge, rebase, reset, checkout that changes tree, stash, tag, branch, switch, restore, cherry-pick, revert, clean) and any write gh subcommand; read-only git/gh commands are fine",
-      "Interactive shell is fish (3.x) — commands meant for the user's own terminal should be fish-compatible; the Bash tool itself runs bash internally",
+      "Interactive shell is fish (3.x) — commands meant for the user's own terminal should be fish-compatible; the Bash tool itself runs bash internally; for commands meant to run on remote hosts (not the user's own terminal), assume Bash instead of fish",
       "Workstation is Arch/CachyOS — local package management is pacman/paru (AUR), not apt/dnf/brew; project-specific build/deploy tooling (this repo targets RHEL/EL8/EL9) follows the project's own docs instead"
     ]
-  },
-  "outputStyle": "Concise"
+  }
 }

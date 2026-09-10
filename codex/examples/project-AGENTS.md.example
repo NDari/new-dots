@@ -1,0 +1,30 @@
+# Project instructions template
+
+Replace placeholders with verified facts before installing as a repository's
+AGENTS.md. Delete irrelevant sections. Keep this example out of global context.
+
+## Development
+
+- Runtime/toolchain: <supported versions and setup source>
+- Build: <exact command>
+- Targeted tests: <exact command and how to select a test>
+- Full tests: <exact command>
+- Formatting/lint: <exact command>
+- Generated files: <paths and regeneration commands>
+
+## Architecture and conventions
+
+- <main components and relevant boundaries>
+- <repository-specific conventions not already apparent from the code>
+
+## Operational boundaries
+
+- Local disposable services: <names and permitted operations>
+- Protected targets: <actual hosts, namespaces, accounts, or environments>
+- Host-affecting deployment commands require explicit authorization for the
+  target and action. Frequency of previous use is not authorization.
+- VM destruction, storage changes, and IAM/RBAC/network changes require
+  explicit authorization for the specific operation.
+- <actual private-data handling requirements and approved destinations>
+
+Git and GitHub writes remain manual under the personal policy.

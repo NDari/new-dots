@@ -79,4 +79,5 @@
     "vscode-neovim.neovimClean": true,
     "markdown-preview-enhanced.previewTheme": "atom-dark.css",
     "go.alternateTools": {},
+    "trivy.minimumReportedSeverity": "MEDIUM",
 }
