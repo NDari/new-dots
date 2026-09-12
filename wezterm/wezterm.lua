@@ -9,9 +9,9 @@ local smart_splits = wezterm.plugin.require('https://github.com/mrjones2014/smar
 local config = wezterm.config_builder()
 
 -- utility for configs changings based on OS
-local is_windows = function()
-	return wezterm.target_triple:find("windows") ~= nil
-end
+-- local is_windows = function()
+-- 	return wezterm.target_triple:find("windows") ~= nil
+-- end
 
 local function get_appearance()
 	if wezterm.gui then
@@ -37,14 +37,27 @@ local function scheme_for_appearance(appearance)
 	end
 end
 
+local function read_file(path)
+  local f = io.open(path, "r")
+  if not f then return nil end
+  local s = f:read("*l")
+  f:close()
+  return s
+end
+
+local scheme = read_file(os.getenv("HOME") .. "/.local/share/tinted-theming/tinty/artifacts/current_scheme")
+-- The config for wezterm
+config.color_scheme = scheme or scheme_for_appearance(get_appearance())
+
 -- This is where you actually apply your config choices
 
 -- config.color_scheme = "Catppuccin Latte (Gogh)"
-config.color_scheme = scheme_for_appearance(get_appearance())
+-- config.color_scheme = scheme_for_appearance(get_appearance())
 
-config.font = wezterm.font("JetBrainsMonoNL Nerd Font", { weight = "Bold", italic = false })
+-- config.font = wezterm.font("JetBrainsMonoNL Nerd Font", { weight = 600, italic = false })
 -- config.font = wezterm.font("ZedMono Nerd Font", { weight = 1000, italic = false })
--- config.font = wezterm.font("FiraCode Nerd Font Mono", { weight = 600, italic = true })
+-- config.font = wezterm.font("FiraCode Nerd Font Mono", { weight = 500, italic = false })
+config.font = wezterm.font("SauceCodePro Nerd Font Mono", { weight = "Bold", italic = true })
 -- config.font = wezterm.font("Hasklig", { weight = "Bold", italic = false })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
@@ -83,27 +96,6 @@ config.keys = {
 
 	{ key = "Enter", mods = "SHIFT", action = wezterm.action({ SendString = "\x1b\r" }) },
 }
-
-config.wsl_domains = {
-	{
-		-- The name of this specific domain.  Must be unique amonst all types
-		-- of domain in the configuration file.
-		name = "WSL:FedoraLinux-42",
-
-		-- The name of the distribution.  This identifies the WSL distribution.
-		-- It must match a valid distribution from your `wsl -l -v` output in
-		-- order for the domain to be useful.
-		distribution = "FedoraLinux-42",
-		default_cwd = "~",
-	},
-}
-
-if is_windows() then
-	config.default_domain = "WSL:FedoraLinux-42"
-end
-
--- config.initial_cols = 100
--- config.initial_rows = 40
 
 -- and finally, return the configuration to wezterm
 return config

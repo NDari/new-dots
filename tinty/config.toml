@@ -19,3 +19,19 @@ path = "https://github.com/tinted-theming/tinted-shell"
 name = "tinted-shell"
 themes-dir = "scripts"
 hook = ". %f"
+
+[[items]]
+path = "https://github.com/tinted-theming/tinted-terminal"
+name = "tinted-wezterm"
+themes-dir = "themes/wezterm"
+supported-systems = ["base16", "base24"]
+# Touch wezterm.lua to trigger config auto-reload.
+hook = """
+SRC=$HOME/.local/share/tinted-theming/tinty/repos/tinted-wezterm/themes/wezterm
+WEZTERM_DIR="$HOME/.config/wezterm"
+if [ -d "$SRC" ]; then
+    mkdir -p "$WEZTERM_DIR"
+    ln -sfn "$SRC" "$WEZTERM_DIR/colors"
+    touch -c "$WEZTERM_DIR/wezterm.lua"
+fi
+"""
