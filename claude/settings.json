@@ -15,27 +15,8 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5-1[1m]",
   "hooks": {
     "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cmd=$(jq -r '.tool_input.command // empty'); printf '%s' \"$cmd\" | grep -Eq '^[[:space:]]*sed([[:space:]]|$)' || exit 0; if printf '%s' \"$cmd\" | grep -Eq '^[[:space:]]*sed[[:space:]]+-n([[:space:]]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"allow\",\"permissionDecisionReason\":\"sed -n is read-only\"}}'; else printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"ask\",\"permissionDecisionReason\":\"only sed -n is auto-allowed\"}}'; fi"
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cmd=$(jq -r '.tool_input.command // empty'); printf '%s' \"$cmd\" | grep -Eq '^[[:space:]]*(g|m)?awk([[:space:]]|$)' || exit 0; stripped=$(printf '%s' \"$cmd\" | sed -e \"s/'[^']*'//g\" -e 's/\"[^\"]*\"//g'); if printf '%s' \"$cmd\" | grep -Eq 'inplace' || printf '%s' \"$cmd\" | grep -Eq '(^|[[:space:]])(--load|-l)' || printf '%s' \"$cmd\" | grep -Eq 'system[[:space:]]*\\(' || printf '%s' \"$cmd\" | grep -Eq '>>' || printf '%s' \"$cmd\" | grep -Eq '>[[:space:]]*\"' || printf '%s' \"$cmd\" | grep -Eq '\\|[[:space:]]*\"' || printf '%s' \"$cmd\" | grep -Eq '\\|&' || printf '%s' \"$stripped\" | grep -Eq '>'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"ask\",\"permissionDecisionReason\":\"awk writes/executes; only read-only awk is auto-allowed\"}}'; else printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"allow\",\"permissionDecisionReason\":\"awk appears read-only\"}}'; fi"
-          }
-        ]
-      },
       {
         "matcher": "Bash",
         "hooks": [
@@ -64,6 +45,7 @@
     "claude-md-management@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true
   },
+  "extraKnownMarketplaces": {},
   "outputStyle": "Concise",
   "effortLevel": "xhigh",
   "modelSettings": {
@@ -72,9 +54,13 @@
     },
     "claude-fable-5-1": {
       "effortLevel": "high"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "high"
     }
   },
   "skipWorkflowUsageWarning": true,
+  "theme": "dark",
   "editorMode": "normal",
   "preferredNotifChannel": "ghostty",
   "remoteControlAtStartup": true,

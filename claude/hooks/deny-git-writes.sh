@@ -17,8 +17,29 @@
 # "deny" blocks the call. Anything else (exit 0) leaves the normal permission
 # flow untouched. Fails OPEN on parse trouble so it never wedges a real action.
 
-cmd=$(jq -r '.tool_input.command // empty' 2>/dev/null) || exit 0
+input=$(cat)
+cmd=$(printf '%s' "$input" | jq -r '.tool_input.command // empty' 2>/dev/null) || exit 0
 [ -n "$cmd" ] || exit 0
+cwd=$(printf '%s' "$input" | jq -r '.cwd // empty' 2>/dev/null)
+
+# Repos where git/gh writes are allowed (their CLAUDE.local.md says so),
+# space-separated. Matched on the session's working directory. Force pushes
+# and history rewrites stay denied there: those are done by hand.
+allowed_repos='/home/ndari/projects/necromancer'
+
+for repo in $allowed_repos; do
+  case "$cwd/" in
+    "$repo"/*)
+      if printf '%s' "$cmd" | grep -Eq "\\bgit[[:space:]]+push\\b.*(--force|[[:space:]]-[a-zA-Z]*f|[[:space:]]\\+[^[:space:]])" \
+         || printf '%s' "$cmd" | grep -Eq "\\bgit[[:space:]]+commit\\b.*--amend" \
+         || printf '%s' "$cmd" | grep -Eq "\\bgit[[:space:]]+reset\\b.*--hard" \
+         || printf '%s' "$cmd" | grep -Eq "\\bgit[[:space:]]+(filter-branch|filter-repo|replace|reflog[[:space:]]+expire)\\b"; then
+        printf '%s' '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"Force pushes and history rewrites (amend, reset --hard, filter-branch, replace) are done by hand by the user, in every repo. Use git revert to undo a commit."}}'
+      fi
+      exit 0
+      ;;
+  esac
+done
 
 git_writes='add|commit|push|pull|fetch|merge|rebase|reset|checkout|switch|restore|stash|rm|mv|tag|branch|cherry-pick|revert|clean|am|apply'
 gh_writes='(pr|issue|release)[[:space:]]+(create|merge|comment|edit|close|delete|ready|reopen)'
