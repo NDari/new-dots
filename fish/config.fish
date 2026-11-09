@@ -85,3 +85,5 @@ end
 if type -q zoxide
     zoxide init fish | source
 end
+
+env COMPLETE=fish psi | source

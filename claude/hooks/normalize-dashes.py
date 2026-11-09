@@ -14,8 +14,15 @@ Scope rule (this is the whole point of the script):
 
 Failures are swallowed: a hook should never block or corrupt an edit.
 """
+import os
 import sys
 import json
+
+# Projects whose files are left untouched, because they need literal dashes
+# (for example psi's edit-matching fixtures). Matched on the resolved path.
+EXCLUDED_ROOTS = [
+    os.path.expanduser("~/projects/psi"),
+]
 
 # Use escapes, not literal glyphs: U+2014 em-dash, U+2013 en-dash. This keeps
 # the table immune to the very normalization this hook performs.
@@ -32,6 +39,12 @@ def main() -> None:
     path = tool_input.get("file_path")
     if not path:
         return
+
+    real = os.path.realpath(path)
+    for root in EXCLUDED_ROOTS:
+        root = os.path.realpath(root)
+        if real == root or real.startswith(root + os.sep):
+            return
 
     try:
         with open(path, "r", encoding="utf-8") as fh:

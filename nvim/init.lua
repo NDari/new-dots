@@ -210,6 +210,17 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+-- better terminal
+vim.api.nvim_create_autocmd({'TermOpen', 'WinEnter'}, {
+  group = vim.api.nvim_create_augroup('custom-term-settings', { clear = true }),
+  callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.opt_local.scrolloff = 0 -- Keep terminal output glued to the bottom
+    vim.cmd('startinsert')      -- Drop right into insert mode on open
+  end,
+})
+
 -- =============================================================================
 -- [[ Plugins ]] -- skipped when launched with: nvim --cmd 'let g:minimal=1'
 -- =============================================================================
@@ -1000,8 +1011,8 @@ require("lazy").setup({
 	},
 })
 
-vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
-vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
-vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up)
-vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
-vim.keymap.set('n', '<C-\\>', require('smart-splits').move_cursor_previous)
+vim.keymap.set({'n', 't', 'i'}, '<C-h>', require('smart-splits').move_cursor_left)
+vim.keymap.set({'n', 't', 'i'}, '<C-j>', require('smart-splits').move_cursor_down)
+vim.keymap.set({'n', 't', 'i'}, '<C-k>', require('smart-splits').move_cursor_up)
+vim.keymap.set({'n', 't', 'i'}, '<C-l>', require('smart-splits').move_cursor_right)
+vim.keymap.set({'n', 't', 'i'}, '<C-\\>', require('smart-splits').move_cursor_previous)

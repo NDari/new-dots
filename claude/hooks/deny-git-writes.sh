@@ -25,7 +25,7 @@ cwd=$(printf '%s' "$input" | jq -r '.cwd // empty' 2>/dev/null)
 # Repos where git/gh writes are allowed (their CLAUDE.local.md says so),
 # space-separated. Matched on the session's working directory. Force pushes
 # and history rewrites stay denied there: those are done by hand.
-allowed_repos='/home/ndari/projects/necromancer'
+allowed_repos='/home/ndari/projects/necromancer /home/ndari/projects/necro2 /home/ndari/projects/cognito /home/ndari/projects/heimdall /home/ndari/projects/psi'
 
 for repo in $allowed_repos; do
   case "$cwd/" in
