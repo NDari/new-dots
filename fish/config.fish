@@ -72,6 +72,11 @@ abbr --add ta 'tmux attach -t'
 abbr --add watch "watch "
 # pacman
 abbr --add search "pacman -Ss | paste -d '' - - | fzf --multi --preview 'pacman -Si {1}' | cut -d ' ' -f 1 | xargs -ro pacman -Si"
+# I miss !! from bash
+function last_history_item
+    echo $history[1]
+end
+abbr -a !! --position anywhere --function last_history_item
 
 # start things if they exist
 # if type -q starship
